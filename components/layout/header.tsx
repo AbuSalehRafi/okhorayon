@@ -5,13 +5,14 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { ThemeToggle } from '../theme-toggle';
 import { BookOpen, Feather, FileText, Image as ImageIcon, Menu, Search, Sparkles, X } from 'lucide-react';
+import { siteConfig } from '@/lib/site-config';
 
 const NAV_LINKS = [
-  { href: '/poems', label: 'Poems', labelBn: 'কবিতা', icon: Feather },
-  { href: '/articles', label: 'Articles', labelBn: 'প্রবন্ধ', icon: FileText },
-  { href: '/research', label: 'Research', labelBn: 'গবেষণা', icon: Sparkles },
-  { href: '/posters', label: 'Posters', labelBn: 'পোস্টার', icon: ImageIcon },
-  { href: '/books', label: 'Books', labelBn: 'বই', icon: BookOpen },
+  { href: '/poems', label: 'কবিতা', labelEn: 'Poems', icon: Feather },
+  { href: '/articles', label: 'প্রবন্ধ', labelEn: 'Articles', icon: FileText },
+  { href: '/research', label: 'গবেষণা', labelEn: 'Research', icon: Sparkles },
+  { href: '/posters', label: 'পোস্টার', labelEn: 'Posters', icon: ImageIcon },
+  { href: '/books', label: 'বই', labelEn: 'Books', icon: BookOpen },
 ];
 
 export function Header() {
@@ -32,29 +33,30 @@ export function Header() {
           href="/"
           className="group flex items-baseline gap-2 text-paper-900 dark:text-ink-100 focus:outline-none"
         >
-          <span className="font-serif text-xl tracking-tight font-medium group-hover:text-accent transition-colors">
-            Rafi
+          <span className="font-serif text-2xl tracking-tight font-semibold text-paper-950 dark:text-ink-50 group-hover:text-accent transition-colors">
+            {siteConfig.name}
           </span>
-          <span className="text-xs font-serif text-paper-400 dark:text-ink-400 tracking-wider">
-            / রাফি
+          <span className="text-xs font-sans text-paper-500 dark:text-ink-400 tracking-wider">
+            / {siteConfig.nameTransliteration}
           </span>
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-7 text-sm font-medium">
+        <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
           {NAV_LINKS.map((item) => {
             const isActive = pathname.startsWith(item.href);
             return (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`transition-colors py-1 relative ${
+                className={`transition-colors py-1 relative flex items-center gap-1.5 ${
                   isActive
                     ? 'text-accent font-semibold'
-                    : 'text-paper-700 dark:text-ink-300 hover:text-paper-900 dark:hover:text-ink-100'
+                    : 'text-paper-700 dark:text-ink-300 hover:text-paper-950 dark:hover:text-ink-50'
                 }`}
               >
                 <span>{item.label}</span>
+                <span className="text-[11px] opacity-60 font-normal">({item.labelEn})</span>
                 {isActive && (
                   <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-accent rounded-full" />
                 )}
@@ -98,22 +100,28 @@ export function Header() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className={`flex items-center justify-between px-3 py-2.5 rounded-md text-base ${
+                className={`flex items-center gap-3 px-3 py-2 rounded-md text-sm transition-colors ${
                   isActive
-                    ? 'bg-paper-200/50 dark:bg-ink-850 text-accent font-medium'
-                    : 'text-paper-800 dark:text-ink-200 hover:bg-paper-100 dark:hover:bg-ink-900'
+                    ? 'bg-paper-200/60 dark:bg-ink-800/60 text-accent font-semibold'
+                    : 'text-paper-700 dark:text-ink-300 hover:bg-paper-100 dark:hover:bg-ink-900'
                 }`}
               >
-                <div className="flex items-center space-x-3">
-                  <Icon className="w-4 h-4 opacity-75" />
-                  <span>{item.label}</span>
-                </div>
-                <span className="text-xs text-paper-400 dark:text-ink-400 font-serif">
-                  {item.labelBn}
-                </span>
+                <Icon className="w-4 h-4" />
+                <span>{item.label}</span>
+                <span className="text-xs text-paper-400 dark:text-ink-500">({item.labelEn})</span>
               </Link>
             );
           })}
+          <div className="pt-2 border-t border-paper-200 dark:border-ink-800">
+            <Link
+              href="/search"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center gap-3 px-3 py-2 rounded-md text-sm text-paper-700 dark:text-ink-300 hover:bg-paper-100 dark:hover:bg-ink-900"
+            >
+              <Search className="w-4 h-4" />
+              <span>অনুসন্ধান (Search)</span>
+            </Link>
+          </div>
         </div>
       )}
     </header>

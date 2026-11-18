@@ -3,19 +3,17 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getPoemBySlug, getPoems } from '@/lib/supabase/api';
 import { formatDate } from '@/lib/utils';
-import { ArrowLeft, Feather } from 'lucide-react';
+import { ArrowLeft, Download, Feather, FileText } from 'lucide-react';
+import { PdfViewer } from '@/components/reader/pdf-viewer';
 
-export async function generateStaticParams() {
-  const poems = await getPoems();
-  return poems.map((p) => ({ slug: p.slug }));
-}
+export const revalidate = 0;
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
   const poem = await getPoemBySlug(params.slug);
   if (!poem) return { title: 'Poem Not Found' };
-  const description = (poem.content || poem.content_bn || '').slice(0, 150);
+  const description = (poem.content_bn || poem.content || '').slice(0, 150);
   return {
-    title: `${poem.title || poem.title_bn} — Poetry by Rafi`,
+    title: `${poem.title || poem.title_bn} — অক্ষরায়ণ`,
     description,
   };
 }
@@ -24,11 +22,11 @@ export default async function SinglePoemPage({ params }: { params: { slug: strin
   const poem = await getPoemBySlug(params.slug);
   if (!poem) notFound();
 
-  const mainTitle = poem.title || poem.title_bn || 'Untitled Poem';
-  const subTitle = poem.title_bn && poem.title_bn !== poem.title ? poem.title_bn : null;
+  const mainTitle = poem.title_bn || poem.title || 'Untitled Poem';
+  const subTitle = poem.title && poem.title !== poem.title_bn ? poem.title : null;
 
   // Primary text to display
-  const primaryBody = poem.content || poem.content_bn || '';
+  const primaryBody = poem.content_bn || poem.content || '';
   const stanzas = primaryBody.split(/\n\s*\n/);
 
   // Secondary translation (only if both distinct versions exist)
@@ -43,7 +41,7 @@ export default async function SinglePoemPage({ params }: { params: { slug: strin
           className="inline-flex items-center gap-1.5 text-xs text-paper-700 dark:text-ink-300 hover:text-accent transition-colors"
         >
           <ArrowLeft className="w-3.5 h-3.5" />
-          <span>Back to all poems</span>
+          <span>সকল কবিতায় ফিরে যান (Back to poems)</span>
         </Link>
       </div>
 
@@ -51,7 +49,7 @@ export default async function SinglePoemPage({ params }: { params: { slug: strin
       <header className="border-b border-paper-200 dark:border-ink-800 pb-6 mb-10">
         <div className="flex items-center gap-2 text-accent text-xs font-semibold uppercase tracking-wider mb-2">
           <Feather className="w-3.5 h-3.5" />
-          <span>Poem</span>
+          <span>কবিতা &middot; Poem</span>
           {poem.is_sample && (
             <span className="ml-auto font-mono text-[10px] px-2 py-0.5 rounded bg-accent/15 text-accent">
               Sample
@@ -59,70 +57,81 @@ export default async function SinglePoemPage({ params }: { params: { slug: strin
           )}
         </div>
 
-        <h1 className="font-serif text-3xl md:text-4xl font-normal text-paper-900 dark:text-ink-100">
+        <h1 className="font-serif text-3xl md:text-4xl font-normal text-paper-950 dark:text-ink-50">
           {mainTitle}
         </h1>
 
         {subTitle && (
-          <p className="font-bengaliSerif text-xl text-paper-700 dark:text-ink-300 mt-1">
+          <p className="font-sans text-xl text-paper-600 dark:text-ink-300 mt-1">
             {subTitle}
           </p>
         )}
 
-        <div className="flex items-center gap-3 text-xs text-paper-700 dark:text-ink-300 mt-4 font-mono">
-          <time>{formatDate(poem.published_at)}</time>
+        <div className="flex items-center gap-3 text-xs text-paper-500 dark:text-ink-400 mt-4 font-mono">
+          <time dateTime={poem.published_at}>{formatDate(poem.published_at)}</time>
           {poem.notes && (
             <>
               <span>&middot;</span>
-              <span className="italic font-sans text-paper-700 dark:text-ink-300">{poem.notes}</span>
+              <span className="italic font-sans text-paper-600 dark:text-ink-400">{poem.notes}</span>
+            </>
+          )}
+          {poem.pdf_url && (
+            <>
+              <span>&middot;</span>
+              <a
+                href={poem.pdf_url}
+                download
+                className="text-accent hover:underline inline-flex items-center gap-1"
+              >
+                <Download className="w-3 h-3" />
+                <span>PDF সংস্করণ</span>
+              </a>
             </>
           )}
         </div>
       </header>
 
+      {/* Embedded PDF Viewer if available */}
+      {poem.pdf_url && (
+        <div className="my-8">
+          <div className="flex items-center justify-between mb-3">
+            <h2 className="text-sm font-sans font-medium text-paper-900 dark:text-ink-100 flex items-center gap-2">
+              <FileText className="w-4 h-4 text-accent" />
+              <span>পিডিএফ পান্ডুলিপি (PDF Manuscript)</span>
+            </h2>
+          </div>
+          <PdfViewer url={poem.pdf_url} title={mainTitle} />
+        </div>
+      )}
+
       {/* Stanza and line-break fidelity */}
-      <div className="my-10 pl-4 md:pl-8 border-l-2 border-accent/40 space-y-8">
-        {stanzas.map((stanza, sIdx) => (
-          <p
-            key={sIdx}
-            className="poem-stanza text-paper-900 dark:text-ink-100 leading-loose text-lg md:text-xl font-serif"
-          >
-            {stanza}
-          </p>
-        ))}
-      </div>
+      {stanzas.length > 0 && stanzas[0] !== '' && (
+        <div className="my-10 pl-4 md:pl-8 border-l-2 border-accent/40 space-y-8">
+          {stanzas.map((stanza, sIdx) => (
+            <p
+              key={sIdx}
+              className="poem-stanza text-paper-900 dark:text-ink-100 leading-loose text-lg md:text-xl font-serif whitespace-pre-line"
+            >
+              {stanza}
+            </p>
+          ))}
+        </div>
+      )}
 
       {/* Secondary translation if available */}
       {hasDistinctTranslation && (
         <div className="mt-16 pt-8 border-t border-paper-200 dark:border-ink-800">
           <h2 className="text-xs uppercase tracking-wider text-accent font-semibold mb-4">
-            বাংলা সংস্করণ / Bengali Translation
+            ইংরেজি সংস্করণ / English Version
           </h2>
-          <div className="pl-4 md:pl-8 border-l-2 border-paper-300 dark:border-ink-700 space-y-6">
-            {poem.content_bn!.split(/\n\s*\n/).map((bnStanza, bIdx) => (
-              <p
-                key={bIdx}
-                className="font-bengaliSerif text-paper-900 dark:text-ink-100 leading-loose text-lg"
-              >
-                {bnStanza}
+          <div className="pl-4 md:pl-8 border-l border-paper-300 dark:border-ink-800 space-y-6 text-paper-700 dark:text-ink-300 font-serif text-base">
+            {(poem.content || '').split(/\n\s*\n/).map((stz, i) => (
+              <p key={i} className="whitespace-pre-line leading-relaxed">
+                {stz}
               </p>
             ))}
           </div>
         </div>
-      )}
-
-      {/* Tags */}
-      {poem.tags && poem.tags.length > 0 && (
-        <footer className="mt-14 pt-6 border-t border-paper-200 dark:border-ink-800 flex flex-wrap gap-2">
-          {poem.tags.map((tag) => (
-            <span
-              key={tag}
-              className="text-xs px-2.5 py-1 rounded bg-paper-200 dark:bg-ink-850 text-paper-700 dark:text-ink-300"
-            >
-              #{tag}
-            </span>
-          ))}
-        </footer>
       )}
     </article>
   );

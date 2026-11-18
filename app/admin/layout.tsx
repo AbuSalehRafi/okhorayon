@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
+import { siteConfig } from '@/lib/site-config';
 import {
   BookOpen,
   Feather,
@@ -11,18 +12,17 @@ import {
   LayoutDashboard,
   LogOut,
   Quote,
-  ShieldAlert,
   Sparkles,
 } from 'lucide-react';
 
 const ADMIN_NAV = [
-  { href: '/admin', label: 'Overview', icon: LayoutDashboard },
-  { href: '/admin/poems', label: 'Poems', icon: Feather },
-  { href: '/admin/articles', label: 'Articles', icon: FileText },
-  { href: '/admin/research', label: 'Research', icon: Sparkles },
-  { href: '/admin/posters', label: 'Posters', icon: ImageIcon },
-  { href: '/admin/books', label: 'Books & Chapters', icon: BookOpen },
-  { href: '/admin/quotes', label: 'Philosopher Quotes', icon: Quote },
+  { href: '/admin', label: 'সবার তালিকা (All Entries)', icon: LayoutDashboard },
+  { href: '/admin/articles', label: 'প্রবন্ধ (Articles)', icon: FileText },
+  { href: '/admin/poems', label: 'কবিতা (Poems)', icon: Feather },
+  { href: '/admin/research', label: 'গবেষণা (Research)', icon: Sparkles },
+  { href: '/admin/posters', label: 'পোস্টার (Posters)', icon: ImageIcon },
+  { href: '/admin/books', label: 'বই (Books)', icon: BookOpen },
+  { href: '/admin/quotes', label: 'দার্শনিক উক্তি (Quotes)', icon: Quote },
 ];
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
@@ -30,7 +30,6 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const router = useRouter();
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
 
-  // If on login page, skip layout shell
   const isLoginPage = pathname === '/admin/login';
 
   useEffect(() => {
@@ -61,7 +60,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   if (isAuthenticated === null) {
     return (
       <div className="py-20 text-center font-mono text-xs text-paper-700 dark:text-ink-400">
-        Verifying sanctuary access...
+        অক্ষরায়ণ অভয়ারণ্য যাচাই করা হচ্ছে...
       </div>
     );
   }
@@ -76,10 +75,10 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       <div className="p-4 rounded-xl border border-paper-300 dark:border-ink-800 bg-paper-100/60 dark:bg-ink-900/60 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>
           <span className="text-[10px] uppercase font-mono tracking-widest text-accent font-semibold block">
-            Author Portal
+            {siteConfig.nameTransliteration} &middot; Author Portal
           </span>
           <h2 className="font-serif text-lg font-medium text-paper-900 dark:text-ink-100">
-            Rafi&apos;s Sanctuary Admin
+            {siteConfig.name} অ্যাডমিন প্যানেল
           </h2>
         </div>
 
@@ -107,10 +106,10 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           <button
             onClick={handleLogout}
             className="flex items-center gap-1 px-3 py-1.5 rounded-md bg-rose-500/10 text-rose-600 dark:text-rose-400 hover:bg-rose-500/20 transition-colors"
-            title="Log Out"
+            title="লগআউট"
           >
             <LogOut className="w-3.5 h-3.5" />
-            <span>Exit</span>
+            <span>লগআউট</span>
           </button>
         </div>
       </div>

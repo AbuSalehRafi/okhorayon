@@ -237,8 +237,12 @@ export default function AdminBooksPage() {
         <>
           {/* Book Metadata Preview */}
           <div className="p-5 rounded-xl border border-paper-200 dark:border-ink-800 bg-paper-100/50 dark:bg-ink-900/40 flex flex-col sm:flex-row gap-6 items-start">
-            <div className="relative w-24 aspect-[2/3] rounded overflow-hidden border border-paper-300 dark:border-ink-800 shrink-0">
-              <Image src={currentBook.cover_image_url} alt={currentBook.title} fill className="object-cover" />
+            <div className="relative w-24 aspect-[2/3] rounded overflow-hidden border border-paper-300 dark:border-ink-800 shrink-0 bg-paper-200 dark:bg-ink-800">
+              {currentBook.cover_image_url ? (
+                <Image src={currentBook.cover_image_url} alt={currentBook.title || 'Book Cover'} fill className="object-cover" />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center text-[10px] text-paper-400">No Cover</div>
+              )}
             </div>
             <div className="flex-1">
               <h2 className="font-serif text-xl font-medium text-paper-900 dark:text-ink-100">

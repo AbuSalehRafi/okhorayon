@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Poem } from '@/lib/types';
+import { Poem, ContentStatus } from '@/lib/types';
 import { Feather, Plus, Trash2, Edit3, Check, Loader2 } from 'lucide-react';
 
 export default function AdminPoemsPage() {
@@ -17,7 +17,7 @@ export default function AdminPoemsPage() {
   const [content, setContent] = useState('');
   const [contentBn, setContentBn] = useState('');
   const [tags, setTags] = useState('');
-  const [status, setStatus] = useState<'draft' | 'published'>('published');
+  const [status, setStatus] = useState<ContentStatus>('published');
   const [saving, setSaving] = useState(false);
 
   const fetchPoems = async () => {
@@ -57,7 +57,7 @@ export default function AdminPoemsPage() {
     setContent(p.content || '');
     setContentBn(p.content_bn || '');
     setTags(p.tags?.join(', ') || '');
-    setStatus(p.status);
+    setStatus(p.status || 'published');
   };
 
   const cancelForm = () => {
@@ -97,6 +97,7 @@ export default function AdminPoemsPage() {
 
       poemToSave = {
         id: `poem-${Date.now()}`,
+        type: 'poem',
         slug: slugCandidate || `poem-${Date.now()}`,
         title: title.trim() || titleBn.trim(), // Fallback if only Bengali provided
         title_bn: titleBn.trim() || undefined,

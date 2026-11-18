@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { formatDate } from '@/lib/utils';
+import { UnifiedEntryForm } from '@/components/admin/unified-entry-form';
 import {
   BookOpen,
   Feather,
@@ -11,17 +12,38 @@ import {
   Plus,
   Sparkles,
   ExternalLink,
+  Search,
+  Trash2,
+  Edit3,
+  CheckCircle2,
+  XCircle,
+  Eye,
+  Settings,
 } from 'lucide-react';
 
 export default function AdminDashboardPage() {
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedType, setSelectedType] = useState<string>('all');
+  const [statusFilter, setStatusFilter] = useState<string>('all');
+
+  // Form modal / view state
+  const [isFormOpen, setIsFormOpen] = useState(false);
+  const [editingItem, setEditingItem] = useState<any>(null);
+
+  // Philosophy editor
+  const [isEditingPhilosophy, setIsEditingPhilosophy] = useState(false);
+  const [philosophyText, setPhilosophyText] = useState('');
 
   const fetchDashboard = async () => {
     try {
       const res = await fetch('/api/content');
       const json = await res.json();
       setData(json);
+      if (json?.profile?.philosophy_statement_bn) {
+        setPhilosophyText(json.profile.philosophy_statement_bn);
+      }
     } catch (err) {
       console.error(err);
     } finally {
@@ -33,187 +55,385 @@ export default function AdminDashboardPage() {
     fetchDashboard();
   }, []);
 
-  const poemsCount = data?.poems?.length || 0;
-  const articlesCount = data?.articles?.length || 0;
-  const researchCount = data?.research?.length || 0;
-  const postersCount = data?.posters?.length || 0;
-  const booksCount = data?.books?.length || 0;
+  const poems = data?.poems || [];
+  const articles = data?.articles || [];
+  const research = data?.research || [];
+  const posters = data?.posters || [];
+  const books = data?.books || [];
 
-  const metrics = [
-    { label: 'Poems', count: poemsCount, href: '/admin/poems', icon: Feather },
-    { label: 'Articles', count: articlesCount, href: '/admin/articles', icon: FileText },
-    { label: 'Research', count: researchCount, href: '/admin/research', icon: Sparkles },
-    { label: 'Posters', count: postersCount, href: '/admin/posters', icon: ImageIcon },
-    { label: 'Books', count: booksCount, href: '/admin/books', icon: BookOpen },
-  ];
+  // Combine all items for the unified management table
+  const allEntries = [
+    ...articles.map((item: any) => ({ ...item, type: 'article' })),
+    ...poems.map((item: any) => ({ ...item, type: 'poem' })),
+    ...research.map((item: any) => ({ ...item, type: 'research' })),
+    ...posters.map((item: any) => ({ ...item, type: 'poster' })),
+    ...books.map((item: any) => ({ ...item, type: 'book' })),
+  ].sort((a: any, b: any) => new Date(b.published_at).getTime() - new Date(a.published_at).getTime());
+
+  // Filter entries
+  const filteredEntries = allEntries.filter((item: any) => {
+    const matchesSearch =
+      !searchQuery.trim() ||
+      (item.title && item.title.toLowerCase().includes(searchQuery.toLowerCase())) ||
+      (item.title_bn && item.title_bn.toLowerCase().includes(searchQuery.toLowerCase())) ||
+      (item.tags && item.tags.some((t: string) => t.toLowerCase().includes(searchQuery.toLowerCase())));
+
+    const matchesType = selectedType === 'all' || item.type === selectedType;
+    const matchesStatus = statusFilter === 'all' || item.status === statusFilter;
+
+    return matchesSearch && matchesType && matchesStatus;
+  });
+
+  const handleTogglePublish = async (id: string, type: string) => {
+    try {
+      const res = await fetch('/api/content', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'toggle_publish',
+          payload: { id, type },
+        }),
+      });
+      if (res.ok) {
+        await fetchDashboard();
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleDeleteItem = async (id: string, type: string, title: string) => {
+    if (!confirm(`Are you sure you want to delete "${title}"?`)) return;
+
+    try {
+      const res = await fetch('/api/content', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'delete_item',
+          payload: { id, type },
+        }),
+      });
+      if (res.ok) {
+        await fetchDashboard();
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleSavePhilosophy = async () => {
+    try {
+      const res = await fetch('/api/content', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'update_profile',
+          payload: {
+            philosophy_statement: philosophyText,
+            philosophy_statement_bn: philosophyText,
+          },
+        }),
+      });
+      if (res.ok) {
+        setIsEditingPhilosophy(false);
+        await fetchDashboard();
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const getItemLink = (item: any) => {
+    switch (item.type) {
+      case 'poem':
+        return `/poems/${item.slug}`;
+      case 'article':
+        return `/articles/${item.slug}`;
+      case 'research':
+        return `/research/${item.slug}`;
+      case 'poster':
+        return `/posters/${item.slug}`;
+      case 'book':
+        return `/books/${item.slug}`;
+      default:
+        return '/';
+    }
+  };
 
   return (
     <div className="space-y-10">
       {/* Top Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-paper-200 dark:border-ink-800">
         <div>
+          <span className="text-[11px] font-mono uppercase tracking-widest text-accent font-semibold block">
+            অক্ষরায়ণ অ্যাডমিন
+          </span>
           <h1 className="font-serif text-3xl font-medium text-paper-900 dark:text-ink-100">
-            Curator Dashboard
+            Curator Sanctuary
           </h1>
           <p className="text-xs text-paper-700 dark:text-ink-300 font-serif mt-1">
-            Review, publish, and manage your complete collection across all disciplines.
+            কোনো কোড পরিবর্তন ছাড়াই সরাসরি PDF আপলোড ও প্রকাশ করুন।
           </p>
         </div>
 
-        <Link
-          href="/"
-          target="_blank"
-          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-paper-300 dark:border-ink-800 text-xs text-paper-700 dark:text-ink-300 hover:text-accent transition-colors"
-        >
-          <span>View Live Site</span>
-          <ExternalLink className="w-3.5 h-3.5" />
-        </Link>
+        <div className="flex items-center gap-3">
+          <Link
+            href="/"
+            target="_blank"
+            className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg border border-paper-300 dark:border-ink-800 text-xs text-paper-700 dark:text-ink-300 hover:text-accent transition-colors"
+          >
+            <span>মূল সাইট দেখুন</span>
+            <ExternalLink className="w-3.5 h-3.5" />
+          </Link>
+
+          <button
+            onClick={() => {
+              setEditingItem(null);
+              setIsFormOpen(!isFormOpen);
+            }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-accent text-white dark:text-ink-950 text-xs font-medium hover:bg-accent-hover transition-colors shadow-sm"
+          >
+            <Plus className="w-4 h-4" />
+            <span>{isFormOpen ? 'ফর্ম বন্ধ করুন' : 'নতুন রচনা আপলোড (Upload)'}</span>
+          </button>
+        </div>
       </div>
 
-      {/* Metrics Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-        {metrics.map((m) => {
+      {/* Editable Philosophy Line Box */}
+      <div className="p-5 rounded-xl border border-paper-200 dark:border-ink-800 bg-paper-100/50 dark:bg-ink-900/40">
+        <div className="flex items-center justify-between mb-2">
+          <span className="text-xs font-mono uppercase tracking-wider text-accent font-medium flex items-center gap-1.5">
+            <Settings className="w-3.5 h-3.5" />
+            <span>হোমপেজের মূল দার্শনিক উক্তি (Homepage Philosophy Line)</span>
+          </span>
+          <button
+            onClick={() => setIsEditingPhilosophy(!isEditingPhilosophy)}
+            className="text-xs text-accent hover:underline"
+          >
+            {isEditingPhilosophy ? 'বাতিল' : 'সম্পাদনা করুন'}
+          </button>
+        </div>
+
+        {isEditingPhilosophy ? (
+          <div className="space-y-3">
+            <textarea
+              value={philosophyText}
+              onChange={(e) => setPhilosophyText(e.target.value)}
+              rows={2}
+              className="w-full px-3 py-2 rounded-lg border border-paper-300 dark:border-ink-800 bg-paper-50 dark:bg-ink-950 text-sm focus:outline-none focus:border-accent font-bengaliSerif"
+            />
+            <button
+              onClick={handleSavePhilosophy}
+              className="px-4 py-1.5 rounded-md bg-accent text-white dark:text-ink-950 text-xs font-medium hover:bg-accent-hover"
+            >
+              সংরক্ষণ করুন
+            </button>
+          </div>
+        ) : (
+          <p className="font-bengaliSerif text-base text-paper-800 dark:text-ink-200 italic">
+            &ldquo;{data?.profile?.philosophy_statement_bn || data?.profile?.philosophy_statement}&rdquo;
+          </p>
+        )}
+      </div>
+
+      {/* Unified Entry Form (Conditional Modal / Dropdown) */}
+      {isFormOpen && (
+        <div className="mb-10">
+          <UnifiedEntryForm
+            initialItem={editingItem}
+            onSuccess={() => {
+              setIsFormOpen(false);
+              setEditingItem(null);
+              fetchDashboard();
+            }}
+            onCancel={() => {
+              setIsFormOpen(false);
+              setEditingItem(null);
+            }}
+          />
+        </div>
+      )}
+
+      {/* Metrics Bar */}
+      <div className="grid grid-cols-2 sm:grid-cols-5 gap-4">
+        {[
+          { label: 'প্রবন্ধ (Articles)', count: articles.length, icon: FileText, type: 'article' },
+          { label: 'কবিতা (Poems)', count: poems.length, icon: Feather, type: 'poem' },
+          { label: 'গবেষণা (Research)', count: research.length, icon: Sparkles, type: 'research' },
+          { label: 'পোস্টার (Posters)', count: posters.length, icon: ImageIcon, type: 'poster' },
+          { label: 'বই (Books)', count: books.length, icon: BookOpen, type: 'book' },
+        ].map((m) => {
           const Icon = m.icon;
           return (
-            <Link
+            <div
               key={m.label}
-              href={m.href}
-              className="p-4 rounded-lg border border-paper-200 dark:border-ink-800 bg-paper-100/50 dark:bg-ink-900/40 hover:border-accent transition-colors"
+              onClick={() => setSelectedType(selectedType === m.type ? 'all' : m.type)}
+              className={`p-4 rounded-xl border cursor-pointer transition-colors ${
+                selectedType === m.type
+                  ? 'border-accent bg-accent/10'
+                  : 'border-paper-200 dark:border-ink-800 bg-paper-100/50 dark:bg-ink-900/40 hover:border-accent/50'
+              }`}
             >
-              <div className="flex items-center justify-between text-paper-700 dark:text-ink-400 mb-2">
-                <Icon className="w-4 h-4" />
+              <div className="flex items-center justify-between text-paper-700 dark:text-ink-400 mb-1">
+                <Icon className="w-4 h-4 text-accent" />
                 <span className="text-2xl font-serif font-medium text-paper-900 dark:text-ink-100">
                   {loading ? '...' : m.count}
                 </span>
               </div>
-              <p className="text-xs font-sans text-paper-700 dark:text-ink-300">
+              <p className="text-xs font-sans text-paper-700 dark:text-ink-300 truncate">
                 {m.label}
               </p>
-            </Link>
+            </div>
           );
         })}
       </div>
 
-      {/* Quick Actions Bar */}
-      <div className="p-5 rounded-lg border border-accent/30 bg-accent/5 dark:bg-accent/10 flex flex-wrap items-center justify-between gap-4">
-        <div>
-          <h3 className="font-serif text-base font-medium text-paper-900 dark:text-ink-100">
-            Compose New Piece
-          </h3>
-          <p className="text-xs text-paper-700 dark:text-ink-300 font-serif">
-            Publish in English, Bengali, or both. Neither language is mandatory.
-          </p>
+      {/* Unified Entries Table with Search and Type Filter */}
+      <div className="border border-paper-200 dark:border-ink-800 rounded-xl overflow-hidden bg-paper-100/30 dark:bg-ink-900/30 shadow-sm">
+        {/* Table Filters Header */}
+        <div className="p-4 border-b border-paper-200 dark:border-ink-800 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 bg-paper-100/70 dark:bg-ink-900/70">
+          {/* Search Input */}
+          <div className="relative flex-1 max-w-md">
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="শিরোনাম বা ট্যাগ দিয়ে অনুসন্ধান..."
+              className="w-full pl-9 pr-4 py-2 rounded-lg border border-paper-300 dark:border-ink-800 bg-paper-50 dark:bg-ink-950 text-xs font-sans focus:outline-none focus:border-accent"
+            />
+            <Search className="w-3.5 h-3.5 absolute left-3 top-3 text-paper-700 dark:text-ink-400" />
+          </div>
+
+          {/* Type Filter Buttons */}
+          <div className="flex items-center gap-1.5 flex-wrap text-xs">
+            {[
+              { key: 'all', label: 'সব' },
+              { key: 'article', label: 'প্রবন্ধ' },
+              { key: 'poem', label: 'কবিতা' },
+              { key: 'research', label: 'গবেষণা' },
+              { key: 'poster', label: 'পোস্টার' },
+              { key: 'book', label: 'বই' },
+            ].map((f) => (
+              <button
+                key={f.key}
+                onClick={() => setSelectedType(f.key)}
+                className={`px-2.5 py-1 rounded-md text-[11px] font-sans transition-colors ${
+                  selectedType === f.key
+                    ? 'bg-accent text-white dark:text-ink-950 font-medium'
+                    : 'bg-paper-200/80 dark:bg-ink-850 text-paper-700 dark:text-ink-300 hover:text-paper-900 dark:hover:text-ink-100'
+                }`}
+              >
+                {f.label}
+              </button>
+            ))}
+          </div>
         </div>
 
-        <div className="flex items-center gap-2 flex-wrap">
-          <Link
-            href="/admin/poems"
-            className="inline-flex items-center gap-1 px-3 py-1.5 rounded-md bg-paper-200 dark:bg-ink-800 text-xs font-medium hover:bg-accent hover:text-white dark:hover:text-ink-950 transition-colors"
-          >
-            <Plus className="w-3.5 h-3.5" />
-            <span>Poem</span>
-          </Link>
-          <Link
-            href="/admin/articles"
-            className="inline-flex items-center gap-1 px-3 py-1.5 rounded-md bg-paper-200 dark:bg-ink-800 text-xs font-medium hover:bg-accent hover:text-white dark:hover:text-ink-950 transition-colors"
-          >
-            <Plus className="w-3.5 h-3.5" />
-            <span>Article</span>
-          </Link>
-          <Link
-            href="/admin/research"
-            className="inline-flex items-center gap-1 px-3 py-1.5 rounded-md bg-paper-200 dark:bg-ink-800 text-xs font-medium hover:bg-accent hover:text-white dark:hover:text-ink-950 transition-colors"
-          >
-            <Plus className="w-3.5 h-3.5" />
-            <span>Research</span>
-          </Link>
-          <Link
-            href="/admin/posters"
-            className="inline-flex items-center gap-1 px-3 py-1.5 rounded-md bg-paper-200 dark:bg-ink-800 text-xs font-medium hover:bg-accent hover:text-white dark:hover:text-ink-950 transition-colors"
-          >
-            <Plus className="w-3.5 h-3.5" />
-            <span>Poster</span>
-          </Link>
-          <Link
-            href="/admin/books"
-            className="inline-flex items-center gap-1 px-3 py-1.5 rounded-md bg-paper-200 dark:bg-ink-800 text-xs font-medium hover:bg-accent hover:text-white dark:hover:text-ink-950 transition-colors"
-          >
-            <Plus className="w-3.5 h-3.5" />
-            <span>Book</span>
-          </Link>
-        </div>
-      </div>
-
-      {/* Recent Manuscripts Table */}
-      <div className="border border-paper-200 dark:border-ink-800 rounded-lg overflow-hidden bg-paper-100/30 dark:bg-ink-900/30">
-        <div className="p-4 border-b border-paper-200 dark:border-ink-800 flex items-center justify-between">
-          <h3 className="font-serif text-base font-medium text-paper-900 dark:text-ink-100">
-            Current Catalog Entries
-          </h3>
-          <span className="text-xs font-mono text-paper-700 dark:text-ink-300">
-            Persisted in data/content.json
-          </span>
-        </div>
-
+        {/* Table View */}
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs font-sans">
-            <thead className="bg-paper-200/60 dark:bg-ink-850 text-paper-700 dark:text-ink-300 uppercase tracking-wider font-mono">
-              <tr>
-                <th className="p-3.5">Title</th>
-                <th className="p-3.5">Type</th>
-                <th className="p-3.5">Status</th>
-                <th className="p-3.5">Date</th>
-                <th className="p-3.5 text-right">Actions</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-paper-200 dark:divide-ink-800 text-paper-800 dark:text-ink-200">
-              {data?.articles?.slice(0, 3).map((a: any) => (
-                <tr key={a.id} className="hover:bg-paper-100 dark:hover:bg-ink-850/50">
-                  <td className="p-3.5 font-serif font-medium">{a.title || a.title_bn}</td>
-                  <td className="p-3.5 font-mono text-accent">Article</td>
-                  <td className="p-3.5">
-                    <span className="px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300">
-                      {a.status}
-                    </span>
-                  </td>
-                  <td className="p-3.5 font-mono text-paper-700 dark:text-ink-300">
-                    {formatDate(a.published_at)}
-                  </td>
-                  <td className="p-3.5 text-right">
-                    <Link href={`/articles/${a.slug}`} className="text-accent hover:underline mr-3">
-                      View
-                    </Link>
-                    <Link href={`/admin/articles`} className="text-paper-700 dark:text-ink-300 hover:underline">
-                      Edit
-                    </Link>
-                  </td>
+          {loading ? (
+            <div className="p-12 text-center text-xs font-mono text-paper-700 dark:text-ink-400">
+              সংগ্রহ লোড হচ্ছে...
+            </div>
+          ) : filteredEntries.length === 0 ? (
+            <div className="p-12 text-center text-xs font-serif text-paper-700 dark:text-ink-400">
+              কোনো রচনা পাওয়া যায়নি। &quot;নতুন রচনা আপলোড&quot; বাটনে ক্লিক করে যোগ করুন।
+            </div>
+          ) : (
+            <table className="w-full text-left text-xs font-sans">
+              <thead className="bg-paper-200/60 dark:bg-ink-850 text-paper-700 dark:text-ink-300 uppercase tracking-wider font-mono">
+                <tr>
+                  <th className="p-3.5">শিরোনাম (Title)</th>
+                  <th className="p-3.5">শাখা (Type)</th>
+                  <th className="p-3.5">ফাইল (PDF)</th>
+                  <th className="p-3.5">স্ট্যাটাস</th>
+                  <th className="p-3.5">তারিখ</th>
+                  <th className="p-3.5 text-right">পদক্ষেপ (Actions)</th>
                 </tr>
-              ))}
-
-              {data?.poems?.slice(0, 3).map((p: any) => (
-                <tr key={p.id} className="hover:bg-paper-100 dark:hover:bg-ink-850/50">
-                  <td className="p-3.5 font-serif font-medium">{p.title || p.title_bn}</td>
-                  <td className="p-3.5 font-mono text-accent">Poem</td>
-                  <td className="p-3.5">
-                    <span className="px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300">
-                      {p.status}
-                    </span>
-                  </td>
-                  <td className="p-3.5 font-mono text-paper-700 dark:text-ink-300">
-                    {formatDate(p.published_at)}
-                  </td>
-                  <td className="p-3.5 text-right">
-                    <Link href={`/poems/${p.slug}`} className="text-accent hover:underline mr-3">
-                      View
-                    </Link>
-                    <Link href={`/admin/poems`} className="text-paper-700 dark:text-ink-300 hover:underline">
-                      Edit
-                    </Link>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody className="divide-y divide-paper-200 dark:divide-ink-800 text-paper-800 dark:text-ink-200">
+                {filteredEntries.map((item: any) => {
+                  const isPub = item.status === 'published';
+                  return (
+                    <tr key={item.id} className="hover:bg-paper-100 dark:hover:bg-ink-850/50 transition-colors">
+                      <td className="p-3.5">
+                        <p className="font-serif font-medium text-sm text-paper-900 dark:text-ink-100 line-clamp-1">
+                          {item.title || item.title_bn}
+                        </p>
+                        {item.title_bn && item.title_bn !== item.title && (
+                          <p className="font-bengaliSerif text-xs text-paper-700 dark:text-ink-300 mt-0.5 line-clamp-1">
+                            {item.title_bn}
+                          </p>
+                        )}
+                      </td>
+                      <td className="p-3.5 font-mono capitalize text-accent">
+                        {item.type}
+                      </td>
+                      <td className="p-3.5 font-mono text-[11px]">
+                        {item.pdf_url ? (
+                          <span className="text-emerald-600 dark:text-emerald-400 font-medium">
+                            PDF সংযুক্ত
+                          </span>
+                        ) : item.image_url ? (
+                          <span className="text-indigo-600 dark:text-indigo-400">
+                            চিত্র (Image)
+                          </span>
+                        ) : (
+                          <span className="text-paper-700 dark:text-ink-400">টেক্সট</span>
+                        )}
+                      </td>
+                      <td className="p-3.5">
+                        <button
+                          onClick={() => handleTogglePublish(item.id, item.type)}
+                          className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-medium transition-colors ${
+                            isPub
+                              ? 'bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-500/25'
+                              : 'bg-amber-500/15 text-amber-700 dark:text-amber-300 hover:bg-amber-500/25'
+                          }`}
+                          title="ক্লিক করে স্ট্যাটাস পরিবর্তন করুন"
+                        >
+                          {isPub ? <CheckCircle2 className="w-3 h-3" /> : <XCircle className="w-3 h-3" />}
+                          <span>{isPub ? 'প্রকাশিত' : 'খসড়া'}</span>
+                        </button>
+                      </td>
+                      <td className="p-3.5 font-mono text-paper-700 dark:text-ink-300">
+                        {formatDate(item.published_at)}
+                      </td>
+                      <td className="p-3.5 text-right space-x-2">
+                        <Link
+                          href={getItemLink(item)}
+                          target="_blank"
+                          className="p-1.5 rounded hover:bg-paper-200 dark:hover:bg-ink-800 text-paper-700 dark:text-ink-300 inline-block"
+                          title="মূল সাইটে দেখুন"
+                        >
+                          <Eye className="w-4 h-4" />
+                        </Link>
+                        <button
+                          onClick={() => {
+                            setEditingItem(item);
+                            setIsFormOpen(true);
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                          }}
+                          className="p-1.5 rounded hover:bg-paper-200 dark:hover:bg-ink-800 text-paper-700 dark:text-ink-300"
+                          title="সম্পাদনা করুন"
+                        >
+                          <Edit3 className="w-4 h-4" />
+                        </button>
+                        <button
+                          onClick={() => handleDeleteItem(item.id, item.type, item.title || item.title_bn)}
+                          className="p-1.5 rounded hover:bg-rose-500/10 text-rose-600 dark:text-rose-400"
+                          title="মুছে ফেলুন"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          )}
         </div>
       </div>
     </div>

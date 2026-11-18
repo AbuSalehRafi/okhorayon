@@ -19,7 +19,7 @@ export default function AdminResearchPage() {
   const [abstract, setAbstract] = useState('');
   const [content, setContent] = useState('');
   const [keywords, setKeywords] = useState('');
-  const [status, setStatus] = useState<'ongoing' | 'published'>('published');
+  const [status, setStatus] = useState<string>('published');
   const [pdfUrl, setPdfUrl] = useState('');
   const [uploadFileName, setUploadFileName] = useState('');
 
@@ -62,7 +62,7 @@ export default function AdminResearchPage() {
     setAbstract(p.abstract || '');
     setContent(p.content || '');
     setKeywords(p.keywords?.join(', ') || '');
-    setStatus(p.status);
+    setStatus(p.status || 'published');
     setPdfUrl(p.pdf_url || '');
     setUploadFileName('');
   };
@@ -111,13 +111,14 @@ export default function AdminResearchPage() {
 
       paperToSave = {
         id: `research-${Date.now()}`,
+        type: 'research',
         slug: slugCandidate || `research-${Date.now()}`,
         title: title.trim() || titleBn.trim(),
         title_bn: titleBn.trim() || undefined,
         abstract,
         content,
         keywords: kwArray,
-        status,
+        status: status as any,
         pdf_url: pdfUrl || undefined,
         published_at: new Date().toISOString(),
         is_sample: false,
@@ -130,7 +131,7 @@ export default function AdminResearchPage() {
         abstract,
         content,
         keywords: kwArray,
-        status,
+        status: status as any,
         pdf_url: pdfUrl || undefined,
       };
     } else {

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Article } from '@/lib/types';
+import { Article, ContentStatus } from '@/lib/types';
 import { calculateReadingTime } from '@/lib/utils';
 import { MarkdownEditor } from '@/components/admin/markdown-editor';
 import { FileText, Plus, Trash2, Edit3, Check, Loader2 } from 'lucide-react';
@@ -20,7 +20,7 @@ export default function AdminArticlesPage() {
   const [excerpt, setExcerpt] = useState('');
   const [content, setContent] = useState('');
   const [tags, setTags] = useState('');
-  const [status, setStatus] = useState<'draft' | 'published'>('published');
+  const [status, setStatus] = useState<ContentStatus>('published');
 
   const fetchArticles = async () => {
     try {
@@ -59,7 +59,7 @@ export default function AdminArticlesPage() {
     setExcerpt(a.excerpt || '');
     setContent(a.content || '');
     setTags(a.tags?.join(', ') || '');
-    setStatus(a.status);
+    setStatus(a.status || 'published');
   };
 
   const cancelForm = () => {
@@ -99,6 +99,7 @@ export default function AdminArticlesPage() {
 
       articleToSave = {
         id: `article-${Date.now()}`,
+        type: 'article',
         slug: slugCandidate || `article-${Date.now()}`,
         title: title.trim() || titleBn.trim(),
         title_bn: titleBn.trim() || undefined,

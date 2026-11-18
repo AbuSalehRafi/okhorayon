@@ -1,18 +1,18 @@
 {
   "profile": {
-    "name": "Rafi",
-    "name_bn": "রাফি",
-    "philosophy_statement": "Thinking in the margin of silence; observing where thought meets stillness.",
-    "philosophy_statement_bn": "নীরবতার প্রান্তে চিন্তার বিস্তার; যেখানে ভাব এসে স্থিরতায় মেশে।",
-    "bio": "A writer, essayist, and researcher exploring metaphysics, aesthetics, consciousness, and the architecture of inner solitude."
+    "name": "অক্ষরায়ণ",
+    "name_bn": "অক্ষরায়ণ",
+    "philosophy_statement": "নীরবতার প্রান্তে চিন্তার বিস্তার; যেখানে ভাব এসে অক্ষরের রূপ নেয়।",
+    "philosophy_statement_bn": "নীরবতার প্রান্তে চিন্তার বিস্তার; যেখানে ভাব এসে অক্ষরের রূপ নেয়।",
+    "bio": "রাফির ব্যক্তিগত চিন্তাশীল পাঠাগার ও আর্কাইভ। দর্শন, সাহিত্য, জনস্বাস্থ্য, সামাজিক বাস্তবতা ও সাহিত্যের নিবিষ্ট অভয়ারণ্য।"
   },
   "quotes": [
     {
       "id": "quote-1",
       "quote_text": "The silence that precedes speech is not empty; it is pregnant with all that cannot be uttered.",
       "quote_text_bn": "কথার আগের নীরবতা শূন্য নয়; তা অকথিত সমস্ত কিছুর গর্ভে নিমগ্ন।",
-      "author": "Rafi",
-      "source": "Notebooks on Solitude [Sample]",
+      "author": "অক্ষরায়ণ",
+      "source": "মননশীল নোটবুক",
       "display_order": 1,
       "is_active": true
     },
@@ -20,7 +20,7 @@
       "id": "quote-2",
       "quote_text": "He who has a why to live can bear almost any how.",
       "quote_text_bn": "যার বাঁচার একটি কারণ আছে, সে প্রায় যেকোনো পরিস্থিতিই সহ্য করতে পারে।",
-      "author": "Friedrich Nietzsche",
+      "author": "ফ্রেডরিখ নিটশে (Friedrich Nietzsche)",
       "source": "Twilight of the Idols",
       "display_order": 2,
       "is_active": true
@@ -29,7 +29,7 @@
       "id": "quote-3",
       "quote_text": "Philosophy is a battle against the bewitchment of our intelligence by means of language.",
       "quote_text_bn": "ভাষার মায়াজালে আমাদের বুদ্ধিমত্তার বন্দিদশার বিরুদ্ধে এক নিরন্তর সংগ্রামই দর্শন।",
-      "author": "Ludwig Wittgenstein",
+      "author": "লুডভিগ ভিটগেনস্টাইন (Ludwig Wittgenstein)",
       "source": "Philosophical Investigations",
       "display_order": 3,
       "is_active": true
@@ -38,329 +38,333 @@
       "id": "quote-4",
       "quote_text": "We do not see things as they are, we see them as we are.",
       "quote_text_bn": "আমরা জিনিসগুলোকে যেভাবে তারা বিদ্যমান সেভাবে দেখি না, বরং আমরা যেভাবে আছি সেভাবেই দেখি।",
-      "author": "Anthroposophical Note",
-      "source": "Reflections [Sample]",
+      "author": "অ্যানানিমাস মেডিটেশন",
+      "source": "Reflections",
       "display_order": 4,
       "is_active": true
     }
   ],
   "poems": [
     {
-      "id": "poem-bengali-test",
-      "slug": "bengali-solitude",
-      "title": "Solitude Fragment",
-      "title_bn": "নির্জনতার গান",
-      "content_bn": "একাকী রাতের গান...",
-      "status": "published",
-      "published_at": "2026-11-18T15:24:28.279Z",
-      "is_sample": false
-    },
-    {
       "id": "poem-1",
       "slug": "nocturne-of-the-unspoken",
-      "title": "Nocturne of the Unspoken [Sample]",
-      "title_bn": "অনুক্ত সুরের নিশুতি [নমুনা]",
-      "published_at": "2026-10-14T22:00:00Z",
+      "title": "অনুক্ত সুরের নিশুতি",
+      "title_bn": "Nocturne of the Unspoken",
+      "published_at": "2026-11-14T22:00:00Z",
       "status": "published",
-      "is_sample": true,
+      "is_sample": false,
       "tags": [
-        "solitude",
-        "night",
-        "metaphysics"
+        "কবিতা",
+        "নিস্তব্ধতা",
+        "রাত্রি"
       ],
-      "notes": "Preserving line breaks and stanza intervals.",
-      "content": "The lamp casts a circle of amber sand\nupon the wooden grain of midnight.\nBetween the hand and the paper\nlies an ocean without shores.\n\nWe name the star to tame its falling,\nwe speak of dawn to quiet the dark,\nyet beneath every syllable\na cathedral of quiet stands untouched.\n\nTurn the lamp low;\nlet the ink dry into silver;\nwhat was not said\nremains the only truth."
+      "content": "The lamp casts a circle of amber sand\nupon the wooden grain of midnight.\nBetween the hand and the paper\nlies an ocean without shores.\n\nWe name the star to tame its falling,\nwe speak of dawn to quiet the dark,\nyet beneath every syllable\na cathedral of quiet stands untouched.\n\nTurn the lamp low;\nlet the ink dry into silver;\nwhat was not said\nremains the only truth.",
+      "content_bn": "রাত্রির জলপাই পাতায় একবিন্দু শিশির জমে থাকে,\nযে কথা বলা হলো না, সে কথাই জেগে থাকে বুকের গভীরে।\nশব্দ যেখানে থেমে যায়, সেখান থেকেই শুরু হয় অনন্তের গান।"
     },
     {
       "id": "poem-2",
       "slug": "shadows-over-the-river",
-      "title": "Shadows Over the River [Sample]",
-      "title_bn": "নদীর বুকে ছায়া [নমুনা]",
-      "published_at": "2026-10-02T19:30:00Z",
+      "title": "নদীর বুকে ছায়া",
+      "title_bn": "Shadows Over the River",
+      "published_at": "2026-11-02T19:30:00Z",
       "status": "published",
-      "is_sample": true,
+      "is_sample": false,
       "tags": [
-        "bengali",
-        "river",
-        "impermanence"
+        "নদী",
+        "অনিত্যতা",
+        "বাংলা"
       ],
       "content": "নদীর গভীর জলে ভাসে মেঘের দল,\nকখনো আলো, কখনো বা ঘোর আঁধার।\nযেই জল ছোঁয়া হলো ক্ষণিকের ভুলে,\nসে জল চলে গেছে দূর সীমানায়।\n\nআমরা শুধু দাঁড়িয়ে থাকি তীরে,\nস্মৃতির নুড়িপাথর কুড়িয়ে রাখি বুকে;\nচিরন্তন প্রবাহের মাঝে একবিন্দু নিস্তব্ধতা—\nএইটুকুই হয়তো আমাদের পরিচয়।"
-    },
-    {
-      "id": "poem-3",
-      "slug": "the-stone-and-the-pendulum",
-      "title": "The Stone and the Pendulum [Sample]",
-      "title_bn": "পাথর ও দোলক [নমুনা]",
-      "published_at": "2026-09-18T14:15:00Z",
-      "status": "published",
-      "is_sample": true,
-      "tags": [
-        "time",
-        "existentialism"
-      ],
-      "content": "A pendulum counts what cannot stay,\ncarving slices from the air.\nThe stone lies motionless in the dust,\nunbothered by the hour.\n\nWhich of the two has understood\nthe weight of eternity?\nOne moves forever to arrive nowhere;\nthe other arrives by remaining."
-    },
-    {
-      "id": "poem-4",
-      "slug": "echoes-in-the-library",
-      "title": "Echoes in the Library [Sample]",
-      "title_bn": "গ্রন্থাগারের প্রতিধ্বনি [নমুনা]",
-      "published_at": "2026-08-30T20:00:00Z",
-      "status": "published",
-      "is_sample": true,
-      "tags": [
-        "memory",
-        "books"
-      ],
-      "content": "Rows of sleeping spines,\nleather bound and breathing softly.\nCenturies folded into calfskin,\nwaiting for an accidental eye.\n\nI walk these aisles as an intruder\nupon the deliberations of ghosts."
     }
   ],
   "articles": [
     {
-      "id": "article-1",
-      "slug": "on-the-architecture-of-inner-silence",
-      "title": "On the Architecture of Inner Silence [Sample]",
-      "title_bn": "অন্তর্নিহিত নীরবতার স্থাপত্য [নমুনা]",
-      "excerpt": "An inquiry into why modern consciousness rejects quietude, and how genuine contemplative thought requires structural emptiness.",
-      "reading_time_min": 7,
-      "tags": [
-        "Philosophy",
-        "Solitude",
-        "Consciousness",
-        "Epistemology"
-      ],
+      "id": "article-1795034829715",
+      "type": "article",
+      "slug": "smart-nation",
+      "title": "smart nation",
+      "title_bn": "smart nation",
+      "description": "",
+      "excerpt": "",
+      "abstract": "",
+      "content": "",
+      "pdf_url": "/uploads/1795034829701-Smart_Nation_Explained.pdf",
+      "cover_image_url": "/uploads/cover-1795034829703-good_boy.jpg",
+      "published_at": "2026-11-18T00:00:00.000Z",
       "status": "published",
-      "published_at": "2026-11-04T10:00:00Z",
-      "is_sample": true,
-      "content": "### The Fear of the Open Horizon\n\nIn our contemporary world, noise is not merely an auditory condition; it has become an ontological shelter. The ceaseless torrent of notifications, commentary, and fractured stimuli serves a defensive psychological function: it shields us from the dizzying vertigo of being left alone in an unmediated chamber with our own mind.\n\nWhen the room falls quiet, what actually happens? For the unpracticed, silence feels empty—a vacuum demanding immediate replenishment. But for the contemplative tradition, silence is not an absence. It is an architecture.\n\n> *\"All of humanity's problems stem from man's inability to sit quietly in a room alone.\"*\n> — Blaise Pascal, *Pensées*\n\n---\n\n### The Three Layers of Stillness\n\n1. **Acoustic Stillness:** The cessation of external decibels. This is the simplest threshold, easily disrupted by a passing siren or the hum of a refrigerator.\n2. **Linguistic Stillness:** The slowing down of the internal narrator—the persistent voice that annotates, critiques, and pre-renders every perception before it is felt.\n3. **Ontological Stillness:** The profound realization that one exists prior to thought, prior to performance, prior to memory.\n\nWhen we examine the second tier, we observe that most people never experience linguistic stillness. Even when sitting silently, they are silently drafting a rebuttal, remembering an slight from seven years ago, or scripting their next appearance.\n\n### Solitude as a Workbench\n\nSolitude is not isolation. Isolation is the painful lack of the other; solitude is the rich presence of the self in dialogue with reality. In solitude, the mind ceases to be a reactive organ and transforms into a workshop of discernment.\n\nTo read deeply, to write with precision, to contemplate without malice—all of these require that one accepts the weight of unhurried minutes. When Rafi writes late into the night, the goal is not productivity in the economic sense, but alignment with what persists."
+      "is_featured": true,
+      "is_sample": false,
+      "tags": [],
+      "keywords": []
     },
     {
-      "id": "article-2",
-      "slug": "the-parable-of-the-unwritten-book",
-      "title": "The Parable of the Unwritten Book [Sample]",
-      "title_bn": "অলিখিত গ্রন্থের রূপকথা [নমুনা]",
-      "excerpt": "Examining the melancholy of potentiality: why every written page is an honorable compromise with perfection.",
+      "id": "article-diu-hall-life",
+      "slug": "daffodil-hall-life-experience",
+      "title": "ড্যাফোডিল বিশ্ববিদ্যালয়ের হল জীবন: একজন শিক্ষার্থীর অভিজ্ঞতা ও উপলব্ধি",
+      "title_bn": "Daffodil University Hall Life: A Student's Experience & Insights",
+      "excerpt": "পরিবারের নিরাপদ ছায়া ছেড়ে উচ্চশিক্ষার জন্য প্রথমবার একা থাকতে শুরু করা যেকোনো শিক্ষার্থীর জীবনেই এক বিশাল পরিবর্তন। অর্থ ব্যবস্থাপনা, বন্ধুত্ব ও আত্মনির্ভরশীলতার বাস্তব পাঠ।",
+      "reading_time_min": 6,
+      "tags": [
+        "ক্যাম্পাস ডায়েরি",
+        "ছাত্রজীবন",
+        "অভিজ্ঞতা",
+        "ড্যাফোডিল"
+      ],
+      "status": "published",
+      "published_at": "2026-11-17T09:00:00Z",
+      "is_featured": true,
+      "is_sample": false,
+      "content": "### ক্যাম্পাস ডায়েরি ও ছাত্রজীবনের অভিজ্ঞতা\n\n**লেখক:** রাফি • শিক্ষার্থী, ড্যাফোডিল ইন্টারন্যাশনাল ইউনিভার্সিটি (DIU)\n\nপরিবারের নিরাপদ ছায়া ছেড়ে উচ্চশিক্ষার জন্য প্রথমবার একা থাকতে শুরু করা যেকোনো শিক্ষার্থীর জীবনেই এক বিশাল পরিবর্তন। আমি রাফি, ড্যাফোডিল ইন্টারন্যাশনাল ইউনিভার্সিটির (DIU) একজন আবাসিক শিক্ষার্থী। সবুজঘেরা এই ক্যাম্পাসের আবাসিক হলে থাকার অভিজ্ঞতা আমার কাছে কেবল থাকার একটি জায়গা নয়; বরং এটি বাস্তব জীবনকে চেনার, নিজেকে নতুনভাবে গড়ে তোলার এবং স্বাবলম্বী হওয়ার এক অনন্য পাঠশালা।\n\n---\n\n### সবুজ ক্যাম্পাস ও হলের চমৎকার পরিবেশ\n\nড্যাফোডিল বিশ্ববিদ্যালয়ের বিশাল ও পরিচ্ছন্ন ক্যাম্পাসের ভেতরেই আবাসিক হলগুলোর অবস্থান হওয়ায় যাতায়াতের কোনো ঝামেলা নেই। সকালের স্নিগ্ধ বাতাসে ঘুম ভাঙা, ক্লাসের ফাঁকে রুমে ফিরে বিশ্রাম নেওয়া কিংবা বিকেলে বন্ধুদের সাথে মাঠে আড্ডা দেওয়া—সব মিলিয়ে এখানকার হল জীবন অত্যন্ত প্রাণবন্ত ও আনন্দদায়ক। নিরাপত্তা, পরিচ্ছন্নতা এবং পড়াশোনার সুষ্ঠু পরিবেশ থাকায় পরিবারের সদস্যরাও নিশ্চিন্ত থাকেন।\n\n### অর্থ ব্যবস্থাপনা (Money Management) শেখার বাস্তব পাঠ\n\nহল জীবনে আসার আগে টাকাপয়সার হিসাব-নিকাশ নিয়ে তেমন একটা ভাবতে হতো না। কিন্তু হলে ওঠার পর মাসিক হাতখরচ কীভাবে পরিকল্পিতভাবে ব্যয় করতে হয়, তা আমি হাতে-কলমে শিখেছি:\n\n* **বাজেট পরিকল্পনা:** মাসের শুরুতে পরিবার থেকে পাওয়া নির্দিষ্ট টাকার ভেতর থেকেই খাওয়া-দাওয়া, পড়াশোনার উপকরণ, ইন্টারনেট বিল এবং ব্যক্তিগত খরচের একটি সুন্দর হিসাব সাজাতে হয়।\n* **অপ্রয়োজনীয় ব্যয় সংকোচন:** কোন খরচটি জরুরি আর কোনটি বিলাসিতা—এই পার্থক্য বুঝতে শেখা হল জীবনের অন্যতম বড় অর্জন। মাস শেষে কিছু টাকা সঞ্চয় করার অভ্যাস আমাকে ভবিষ্যতের জন্য আরও দায়িত্বশীল করে তুলেছে।\n\n### সামাজিকতা ও নতুন নতুন বন্ধুত্ব\n\nহল জীবনের সবচেয়ে সুন্দর দিক হলো এখানে দেশের নানা প্রান্ত থেকে আসা ভিন্ন ভিন্ন সংস্কৃতি ও মানসিকতার শিক্ষার্থীদের সাথে মেশার সুযোগ তৈরি হয়:\n\n* **নতুন বন্ধু ও ভ্রাতৃত্ববোধ:** একই রুমে বা ফ্লোরে থাকার সুবাদে খুব অল্প সময়ের মধ্যেই অপরিচিত সহপাঠীরা আপন ভাইয়ের মতো হয়ে ওঠে। অসুস্থ হলে পাশে দাঁড়ানো, পরীক্ষার আগে একসাথে গ্রুপ স্টাডি করা কিংবা গভীর রাতে চায়ের কাপে ভবিষ্যতের স্বপ্ন নিয়ে গল্প করা—এই সম্পর্কগুলো সারাজীবনের সম্পদ।\n* **সামাজিক দক্ষতা বৃদ্ধি:** ভিন্ন পরিবেশের মানুষের সাথে মানিয়ে নেওয়া, পারস্পরিক শ্রদ্ধাবোধ বজায় রাখা এবং দলগতভাবে যেকোনো সমস্যা সমাধান করার মাধ্যমে আমার সামাজিকতা (Socialization) ও যোগাযোগ দক্ষতা বহুগুণ বেড়েছে।\n\n### আত্মনির্ভরশীলতা ও জীবনের নানা শিক্ষা\n\nহলে থাকার ফলে নিজের কাজ নিজে করার মানসিকতা তৈরি হয়েছে। সময়ের কাজ সময়ে করা, নিজের জিনিসপত্র গুছিয়ে রাখা, মানসিক চাপ সামলানো এবং প্রয়োজনে সঠিক সিদ্ধান্ত নেওয়ার ক্ষমতা আমাকে আগের চেয়ে অনেক বেশি আত্মবিশ্বাসী করে তুলেছে। ক্লাসের পড়াশোনার পাশাপাশি বিভিন্ন ক্লাব কার্যক্রম ও সৃজনশীল কাজে যুক্ত হওয়ার সুযোগও হল জীবনে অনেক বেশি পাওয়া যায়।\n\n> **উপসংহার:**\n> আমার দৃষ্টিতে ড্যাফোডিল বিশ্ববিদ্যালয়ের হল জীবন একজন শিক্ষার্থীর ব্যক্তিগত ও মানসিক বিকাশের জন্য অসাধারণ এক অভিজ্ঞতা। এখানে আমি শুধু ভালো বন্ধু আর সুন্দর স্মৃতিই পাইনি, বরং অর্থ ব্যবস্থাপনা, সামাজিকতা এবং বাস্তব জীবনের কঠিন পরিস্থিতি সামলানোর মতো গুরুত্বপূর্ণ দক্ষতা অর্জন করেছি। বিশ্ববিদ্যালয় জীবন শেষে কর্মক্ষেত্রে প্রবেশের জন্য এই হল জীবন আমাকে একজন যোগ্য ও আত্মনির্ভরশীল মানুষ হিসেবে প্রস্তুত করছে।",
+      "pdf_url": "/uploads/daffodil-hall-life.pdf"
+    },
+    {
+      "id": "article-bangladesh-hospitals",
+      "slug": "state-of-bangladesh-hospitals-crisis",
+      "title": "বাংলাদেশের হাসপাতালগুলোর বেহাল দশা: চিকিৎসাসেবা সংকট ও ভোগান্তি",
+      "title_bn": "The Crisis of Healthcare Services in Bangladeshi Hospitals",
+      "excerpt": "চিকিৎসা মানুষের অন্যতম মৌলিক অধিকার হলেও বাংলাদেশের সরকারি ও বেসরকারি হাসপাতালগুলোর বর্তমান চিত্র অত্যন্ত হতাশাজনক। জনস্বাস্থ্য সংকট ও সমাধানের রূপরেখা।",
       "reading_time_min": 5,
       "tags": [
-        "Aesthetics",
-        "Writing",
-        "Literature"
+        "জনস্বাস্থ্য",
+        "হাসপাতাল",
+        "বাংলাদেশ",
+        "বিশ্লেষণ"
       ],
       "status": "published",
-      "published_at": "2026-10-21T09:15:00Z",
-      "is_sample": true,
-      "content": "### The Inevitable Compromise\n\nEvery blank notebook carries infinite promise. Before the first stroke of ink meets the cream-colored leaf, the unwritten book is flawless. It contains the exact cadence that could heal grief; it holds the philosophical synthesis that might unite intuition with analytical rigour.\n\nYet the moment the pen descends, infinity collapses. A choice is made: *this* noun instead of that one, *this* syntax rather than that cadence.\n\n```\nPure Potentiality  ───(Act of Writing)───>  Concrete Form\n   [Flawless]                               [Imperfect & Mortal]\n```\n\n### Why We Must Write Anyway\n\nTo refuse to write out of fear of imperfection is a subtle form of spiritual cowardice. It prefers the safety of an imagined monument over the rough dignity of an earthen bowl. The artist's duty is not to rival the divine imagination, but to offer a clear, honest fragment of human experience.\n\nEach sentence is a bridge thrown across the abyss between two solitudes."
+      "published_at": "2026-11-16T11:30:00Z",
+      "is_featured": false,
+      "is_sample": false,
+      "content": "### স্বাস্থ্যসেবা ও জনদুর্ভোগ বিশ্লেষণ\n\n**সংক্ষিপ্ত পর্যালোচনা • জনস্বাস্থ্য ও ব্যবস্থাপনা**\n\nচিকিৎসা মানুষের অন্যতম মৌলিক অধিকার হলেও বাংলাদেশের সরকারি ও বেসরকারি হাসপাতালগুলোর বর্তমান চিত্র অত্যন্ত হতাশাজনক। দেশের বিপুল জনসংখ্যার তুলনায় সরকারি হাসপাতালগুলোতে শয্যা ও চিকিৎসকের তীব্র সংকট রয়েছে। ফলে অধিকাংশ হাসপাতালেই রোগীদের মেঝে ও বারান্দায় শুয়ে চিকিৎসা নিতে দেখা যায়।\n\n---\n\n### অব্যবস্থাপনা ও সেবার মান\n\nহাসপাতালগুলোর অস্বাস্থ্যকর পরিবেশ, অপরিচ্ছন্ন শৌচাগার এবং বর্জ্য অব্যবস্থাপনা রোগীদের জন্য নতুন সংক্রমণের ঝুঁকি তৈরি করছে। জরুরি বিভাগে দীর্ঘ অপেক্ষা, প্রয়োজনীয় ওষুধের ঘাটতি এবং যন্ত্রপাতির অভাবে সাধারণ মানুষ কাঙ্ক্ষিত সেবা পাচ্ছেন না। এ ছাড়া হাসপাতাল প্রাঙ্গণে দালালচক্রের দৌরাত্ম্যে অসহায় রোগীরা প্রতিনিয়ত প্রতারিত হচ্ছেন এবং অপ্রয়োজনীয় পরীক্ষা-নিরীক্ষার নামে অর্থনৈতিকভাবে নিঃস্ব হচ্ছেন।\n\nঅন্যদিকে, বেসরকারি হাসপাতালগুলোর লাগামহীন চিকিৎসা ব্যয় সাধারণ মানুষের নাগালের বাইরে চলে গেছে।\n\n### সমাধানের পথ\n\n> এই অচলাবস্থা নিরসনে স্বাস্থ্য খাতে বাজেট বৃদ্ধি, আধুনিক চিকিৎসা সরঞ্জাম সরবরাহ এবং হাসপাতালগুলোর তদারকি জোরদার করা জরুরি। চিকিৎসক ও নার্সদের জবাবদিহিতা নিশ্চিত করার পাশাপাশি দালালচক্র নির্মূল করতে পারলে সাধারণ মানুষ তাদের ন্যায্য চিকিৎসাসেবা ফিরে পাবে।",
+      "pdf_url": "/uploads/bangladesh-hospitals-crisis.pdf"
     },
     {
-      "id": "article-3",
-      "slug": "bengali-thought-and-existential-melancholy",
-      "title": "Bangla Literature and the Aesthetic of 'Biraha' [Sample]",
-      "title_bn": "বাংলা সাহিত্য ও বিরহ-চৈতন্যের নন্দনতত্ত্ব [নমুনা]",
-      "excerpt": "Exploring the philosophical depth of longing and separation in classical and modern Bengali poetic consciousness.",
-      "reading_time_min": 9,
+      "id": "article-student-life-bangladesh",
+      "slug": "student-life-in-bangladesh-dreams-struggles",
+      "title": "বাংলাদেশের ছাত্রজীবন: স্বপ্ন, সংগ্রাম ও আগামী পথচলা",
+      "title_bn": "Student Life in Bangladesh: Dreams, Struggles and the Journey Ahead",
+      "excerpt": "ছাত্রজীবন কেবল শ্রেণিকক্ষের পাঠ্যবইয়ে সীমাবদ্ধ নয়; এটি পরিবার ও সমাজের প্রত্যাশা, অর্থনৈতিক বাস্তবতা, প্রযুক্তিগত পরিবর্তন এবং ভবিষ্যৎ গড়ার এক বহুমুখী অভিজ্ঞতা।",
+      "reading_time_min": 7,
       "tags": [
-        "Bangla",
-        "Poetics",
-        "Philosophy"
+        "শিক্ষা",
+        "ছাত্রসমাজ",
+        "ক্যাম্পাস",
+        "সমাজচিন্তা"
       ],
       "status": "published",
-      "published_at": "2026-09-28T16:00:00Z",
-      "is_sample": true,
-      "content": "### বিরহ কেবল বিচ্ছেদ নয়\n\nবাঙালির ভাবচেতনায় 'বিরহ' কেবল প্রিয়জনের শারীরিক অনুপস্থিতি নির্দেশ করে না; এটি একটি সার্বিক দার্শনিক অবস্থান। পদাবলি কীর্তন থেকে শুরু করে আধুনিক জীবনানন্দ দাশ পর্যন্ত বিরহ রূপ নিয়েছে বিশ্বচরাচরের সাথে মানুষের এক অপূরণীয় দূরত্বের রূপকে।\n\nরবীন্দ্রনাথ ঠাকুরের ভাষায়:\n> *\"যেথা আমি আছি সেথা তুমি নাই, যেথা তুমি আছ সেথা আমি নাই—মাঝখানে অন্তহীন ক্রন্দন।\"*\n\n### জীবনানন্দের অন্ধকার ও নির্জনতা\n\nজীবনানন্দ দাশ যখন লিখলেন *\"সব পাখি ঘরে আসে—সব নদী—ফুরায় এ জীবনের সব লেনদেন; থাকে শুধু অন্ধকার, মুখোমুখি বসিবার বনলতা সেন\"*, তখন অন্ধকার কোনো ভয়াল অস্তিত্ব নয়, বরং অবসন্ন আত্মার একমাত্র আশ্রয়।\n\nবাঙালি মনস্তত্ত্বের এই নিবিড় বিষাদ আসলে এক গভীর প্রজ্ঞার দ্যোতক। তা জাগতিক চঞ্চলতাকে অতিক্রম করে এক শান্ত, অবিনশ্বর উপলব্ধিতে উপনীত হতে শেখায়।"
+      "published_at": "2026-11-15T14:00:00Z",
+      "is_featured": false,
+      "is_sample": false,
+      "content": "### শিক্ষা ও সমাজ বিশ্লেষণ\n\n**সমকালীন প্রেক্ষাপট • একাডেমিক চ্যালেঞ্জ, জীবনযাত্রা ও ভবিষ্যৎ সম্ভাবনা**\n\nছাত্রজীবন মানুষের জীবনের সবচেয়ে গুরুত্বপূর্ণ ও গঠনমূলক অধ্যায়। বাংলাদেশের প্রেক্ষাপটে ছাত্রজীবন কেবল শ্রেণিকক্ষের পাঠ্যবইয়ের মধ্যে সীমাবদ্ধ নয়; বরং এটি পরিবার ও সমাজের প্রত্যাশা, অর্থনৈতিক বাস্তবতা, প্রযুক্তিগত পরিবর্তন এবং ভবিষ্যৎ ক্যারিয়ার গঠনের এক বহুমুখী অভিজ্ঞতার সমষ্টি।\n\n---\n\n### একাডেমিক চাপ ও প্রতিযোগিতা\n\nবাংলাদেশের শিক্ষা ব্যবস্থায় প্রাথমিক স্তর থেকে শুরু করে উচ্চশিক্ষা পর্যন্ত শিক্ষার্থীদের তীব্র প্রতিযোগিতার মধ্য দিয়ে যেতে হয়:\n\n* **পরীক্ষাকেন্দ্রিক পড়াশোনা:** এসএসসি ও এইচএসসি পরীক্ষার ফলাফল এবং পরবর্তীতে বিশ্ববিদ্যালয় ভর্তি পরীক্ষার প্রস্তুতি শিক্ষার্থীদের ওপর প্রবল মানসিক চাপ সৃষ্টি করে। অনেক ক্ষেত্রেই সৃজনশীল চিন্তার চেয়ে মুখস্থবিদ্যা ও জিপিএ-৫ পাওয়ার দৌড় মুখ্য হয়ে দাঁড়ায়।\n* **উচ্চশিক্ষার বাস্তবতা:** পাবলিক বিশ্ববিদ্যালয়ে আসনসংখ্যা সীমিত হওয়ায় বিপুলসংখ্যক শিক্ষার্থী বেসরকারি বিশ্ববিদ্যালয় বা জাতীয় বিশ্ববিদ্যালয়ে ভর্তি হন। সেমিস্টার পদ্ধতি, অ্যাসাইনমেন্ট, প্রেজেন্টেশন এবং গবেষণার চাপে বিশ্ববিদ্যালয় জীবনের রুটিন থাকে অত্যন্ত ব্যস্ততাপূর্ণ।\n\n### আবাসন ও দৈনন্দিন জীবনযাত্রা\n\nউচ্চশিক্ষার জন্য দেশের বিভিন্ন প্রান্ত থেকে হাজার হাজার শিক্ষার্থী ঢাকা, চট্টগ্রাম, রাজশাহী বা সিলেটের মতো বড় শহরগুলোতে পাড়ি জমান। এই স্থানান্তর তাদের জীবনযাত্রায় বড় পরিবর্তন নিয়ে আসে:\n\n* **হল ও মেস জীবন:** পাবলিক বিশ্ববিদ্যালয়ের শিক্ষার্থীরা আবাসিক হলে থাকাকালীন সীমিত সুযোগ-সুবিধা ও গণরুম সংস্কৃতির মতো চ্যালেঞ্জের মুখোমুখি হন। অন্যদিকে, বেসরকারি বা জাতীয় বিশ্ববিদ্যালয়ের অধিকাংশ শিক্ষার্থীকে মেস বা সাবলেটে থাকতে হয়, যেখানে বাসাভাড়া, খাবারের মান এবং যাতায়াতের ভোগান্তি নিত্যদিনের সঙ্গী।\n* **আর্থিক টানাপোড়েন ও টিউশনি:** মধ্যবিত্ত ও নিম্ন-মধ্যবিত্ত পরিবারের অনেক শিক্ষার্থীকে নিজেদের খরচ চালানোর পাশাপাশি পরিবারকে সহায়তা করতে হয়। ফলে পড়াশোনার পাশাপাশি টিউশনি, পার্ট-টাইম চাকরি কিংবা ফ্রিল্যান্সিং বাংলাদেশের ছাত্রসমাজের জীবনযাত্রার একটি অবিচ্ছেদ্য অংশ হয়ে উঠেছে।\n\n### ডিজিটাল যুগ ও সামাজিক যোগাযোগমাধ্যমের প্রভাব\n\n* **অনলাইন শিক্ষা ও দক্ষতা উন্নয়ন:** ইউটিউব, কোরসেরা এবং বিভিন্ন দেশীয় অনলাইন প্ল্যাটফর্মের কল্যাণে শিক্ষার্থীরা এখন ঘরে বসেই প্রোগ্রামিং, গ্রাফিক ডিজাইন, ইংরেজি দক্ষতা এবং একাডেমিক বিষয়গুলো শিখতে পারছেন।\n* **মানসিক স্বাস্থ্য ও সময়ের অপচয়:** সামাজিক যোগাযোগমাধ্যমে দীর্ঘ সময় ব্যয় করার ফলে অনেক শিক্ষার্থীর মনোযোগ ও ঘুমের ব্যাঘাত ঘটছে। ক্যারিয়ার নিয়ে অনিশ্চয়তা এবং একাকীত্বের কারণে উদ্বেগ ও বিষণ্ণতার হারও বাড়ছে।\n\n> **আগামীর প্রত্যাশা:**\n> বাংলাদেশের বিশাল এই তরুণ জনগোষ্ঠীকে জনসম্পদে রূপান্তর করতে হলে ছাত্রজীবনের প্রতিবন্ধকতাগুলো দূর করা জরুরি। মুখস্থনির্ভর শিক্ষার পরিবর্তে কর্মমুখী ও গবেষণাধর্মী শিক্ষা নিশ্চিত করা, আবাসন সংকট নিরসন এবং মানসিক স্বাস্থ্যসেবা নিশ্চিত করা গেলে বাংলাদেশের ছাত্রসমাজ দেশ ও বিশ্বকে নেতৃত্ব দেওয়ার যোগ্যতা অর্জন করবে।",
+      "pdf_url": "/uploads/bangladesh-student-life.pdf"
+    },
+    {
+      "id": "article-dhaka-air-pollution",
+      "slug": "dhaka-air-pollution-child-health-risk",
+      "title": "ঢাকার বায়ুদূষণ ও শিশুদের স্বাস্থ্যঝুঁকি: এক নীরব ঘাতকের অশনিসংকেত",
+      "title_bn": "Dhaka Air Pollution & Children's Health Risks: An Unseen Crisis",
+      "excerpt": "বিশ্বের শীর্ষ দূষিত বায়ুর তালিকায় ঢাকার অবস্থান। শিশুদের ফুসফুস, মস্তিষ্ক ও শারীরিক বিকাশে বায়ুদূষণের ভয়াবহ প্রভাব এবং সুরক্ষায় প্রয়োজনীয় পদক্ষেপ।",
+      "reading_time_min": 6,
+      "tags": [
+        "পরিবেশ",
+        "বায়ুদূষণ",
+        "জনস্বাস্থ্য",
+        "শিশু অধিকার"
+      ],
+      "status": "published",
+      "published_at": "2026-11-13T10:15:00Z",
+      "is_featured": false,
+      "is_sample": false,
+      "content": "### পরিবেশ ও জনস্বাস্থ্য বিশ্লেষণ\n\n**শিশুস্বাস্থ্য ও নগর পরিবেশ পর্যালোচনা**\n\nবিশ্বের সবচেয়ে দূষিত বায়ুর শহরগুলোর তালিকায় বাংলাদেশের রাজধানী ঢাকা নিয়মিতভাবেই শীর্ষস্থানে অবস্থান করছে। অপরিকল্পিত নগরায়ণ, ফিটনেসবিহীন যানবাহনের কালো ধোঁয়া, মেগা প্রকল্প ও নির্মাণকাজের ধুলাবালি এবং শহরের চারপাশের ইটভাটার নির্গত বিষাক্ত গ্যাস ঢাকার বাতাসকে প্রতিনিয়ত শ্বাসরুদ্ধকর করে তুলছে। বায়ুদূষণের এই ভয়াবহতায় সব বয়সের মানুষই ক্ষতিগ্রস্ত হচ্ছেন, তবে সবচেয়ে বেশি ও অপূরণীয় ক্ষতির মুখে পড়ছে আমাদের শিশুরা।\n\n---\n\n### শিশুদের ওপর বায়ুদূষণের ভয়াবহ প্রভাব\n\nবিশেষজ্ঞদের মতে, প্রাপ্তবয়স্কদের তুলনায় শিশুরা বায়ুদূষণের প্রতি অনেক বেশি সংবেদনশীল। কারণ শিশুদের ফুসফুস, মস্তিষ্ক এবং রোগ প্রতিরোধ ক্ষমতা তখনো পূর্ণাঙ্গভাবে বিকশিত হয় না। এ ছাড়া শিশুরা প্রাপ্তবয়স্কদের তুলনায় প্রায় দ্বিগুণ দ্রুতগতিতে শ্বাস নেয় এবং ভূপৃষ্ঠের কাছাকাছি স্তরের বাতাস গ্রহণ করে, যেখানে ধূলিকণা ও বিষাক্ত গ্যাসের ঘনত্ব সবচেয়ে বেশি থাকে।\n\n* **শ্বাসনালির জটিল রোগ ও অ্যাজমা:** ঢাকার বাতাসে অতি ক্ষুদ্র বস্তুকণা বা PM2.5-এর মাত্রা বিশ্ব স্বাস্থ্য সংস্থার নির্ধারিত মানদণ্ডের চেয়ে কয়েক গুণ বেশি থাকে। এই সূক্ষ্ম কণাগুলো শ্বাসের সাথে ফুসফুসের গভীরে প্রবেশ করে হাঁপানি, ব্রঙ্কাইটিস এবং দীর্ঘমেয়াদী শ্বাসকষ্টের ঝুঁকি বহুগুণ বাড়িয়ে দেয়।\n* **মস্তিষ্কের বিকাশ ও মানসিক স্বাস্থ্যে নেতিবাচক প্রভাব:** সাম্প্রতিক গবেষণাগুলোতে দেখা গেছে, উচ্চমাত্রার দূষিত বাতাসে বেড়ে ওঠা শিশুদের মধ্যে মনোযোগের অভাব, শিখনক্ষমতা হ্রাস এবং ভবিষ্যতে উদ্বেগ ও বিষণ্ণতার মতো ঝুঁকি তৈরি হয়।\n* **গর্ভস্থ শিশুর ঝুঁকি:** গর্ভবতী মায়েরা দীর্ঘ সময় দূষিত বায়ুর সংস্পর্শে থাকলে অপরিণত শিশু জন্মদান (Preterm birth) এবং কম ওজনের শিশু জন্ম নেওয়ার আশঙ্কা বেড়ে যায়।\n\n### ঢাকার বায়ুদূষণের প্রধান কারণসমূহ\n\n1. **অনিয়ন্ত্রিত নির্মাণকাজ:** শহরে চলমান নির্মাণকাজে পরিবেশবান্ধব নীতিমালা না মানা এবং খোলা অবস্থায় বালু ও মাটি পরিবহন।\n2. **ইটভাটা ও শিল্পকারখানা:** ঢাকার আশেপাশের সনাতন পদ্ধতির ইটভাটা ও কলকারখানার বিষাক্ত কালো ধোঁয়া।\n3. **যানবাহনের ধোঁয়া:** মেয়াদোত্তীর্ণ ও ফিটনেসবিহীন বাস-ট্রাক থেকে নির্গত কার্বন মনোক্সাইড ও সালফার ডাই-অক্সাইড।\n4. **বর্জ্য পোড়ানো ও সবুজায়নের অভাব:** খোলা জায়গায় প্লাস্টিক পোড়ানো এবং জলাশয় ও গাছপালার আশঙ্কাজনক হ্রাস।\n\n> **উপসংহার:**\n> শিশুরা আমাদের ভবিষ্যৎ, আর তাদের জন্য একটি নিরাপদ ও নির্মল পরিবেশ নিশ্চিত করা আমাদের নৈতিক ও রাষ্ট্রীয় দায়িত্ব। ঢাকার বায়ুদূষণকে কেবল পরিবেশগত সমস্যা হিসেবে না দেখে জরুরি জনস্বাস্থ্য সংকট হিসেবে বিবেচনা করতে হবে।",
+      "pdf_url": "/uploads/dhaka-air-pollution.pdf"
+    },
+    {
+      "id": "article-bangladesh-literature",
+      "slug": "authors-and-literature-of-bangladesh",
+      "title": "বাংলাদেশের লেখক ও সাহিত্য: ঐতিহ্য, বিকাশ ও আধুনিক ধারা",
+      "title_bn": "Authors and Literature of Bangladesh: Heritage & Evolution",
+      "excerpt": "প্রাচীন চর্যাপদ থেকে শুরু করে মুক্তিযুদ্ধোত্তর বাংলাদেশের কথাশিল্প, কবিতা ও মননশীল প্রবন্ধের আধুনিক দিগন্ত। হুমায়ূন আহমেদ, শামসুর রাহমান থেকে তরুণ প্রজন্মের অবদান।",
+      "reading_time_min": 6,
+      "tags": [
+        "বাংলা সাহিত্য",
+        "ঐতিহ্য",
+        "মুক্তিযুদ্ধ",
+        "কথাশিল্প"
+      ],
+      "status": "published",
+      "published_at": "2026-11-10T16:00:00Z",
+      "is_featured": false,
+      "is_sample": false,
+      "content": "### বাঙালি সংস্কৃতি ও সাহিত্য ঐতিহ্য\n\n**বাংলা সাহিত্যের রূপরেখা • ঔপন্যাসিক, কবি ও প্রাবন্ধিকদের অবদান**\n\nবাঙালি সংস্কৃতির প্রাণকেন্দ্র হলো এর সমৃদ্ধ সাহিত্য। প্রাচীন চর্যাপদের পদাবলী থেকে শুরু করে মধ্যযুগের মঙ্গলকাব্য, বৈষ্ণব পদাবলী এবং আধুনিক যুগের উপন্যাসে বাংলা সাহিত্য এক অনন্য উচ্চতা অর্জন করেছে। ১৯৭১ সালের মহান মুক্তিযুদ্ধের মাধ্যমে স্বাধীন রাষ্ট্র হিসেবে আত্মপ্রকাশের পর বাংলাদেশের সাহিত্য তার নিজস্ব ভূরাজনৈতিক চেতনা, মানুষের সংগ্রাম, দ্রোহ ও প্রেমের মেলবন্ধনে এক স্বতন্ত্র ধারা তৈরি করেছে।\n\n---\n\n### ভাষা আন্দোলন ও মুক্তিযুদ্ধের সাহিত্য\n\nবাংলাদেশের সাহিত্যের ইতিহাসে ১৯৫২ সালের ভাষা আন্দোলন এবং ১৯৭১ সালের মহান মুক্তিযুদ্ধ এক গভীর প্রভাব ফেলেছে। এই আন্দোলন ও যুদ্ধ কেবল রাজনৈতিক মুক্তি ছিল না, বরং তা ছিল বাঙালি জাতির সাহিত্য ও শিল্পচেতনার এক নবজাগরণ।\n\n* **কবিতা ও প্রতিবাদ:** শামসুর রাহমানের কবিতা (\"তোমাকে পাওয়ার জন্য, হে স্বাধীনতা\"), শহীদ কাদরী ও আল মাহমুদের কবিতায় ফুটে উঠেছে বাঙালি জাতির মুক্তির আকুতি ও সংগ্রামের চিত্র।\n* **উপন্যাস ও কথাসাহিত্য:** সৈয়দ ওয়ালীউল্লাহর 'লালসালু', শওকত আলীর 'প্রদোষে প্রাকৃতজন', এবং সেলিনা হোসেন ও রাবেয়া খাতুনের উপন্যাসে গ্রামীণ সমাজচিত্র ও ইতিহাসের দলিল নিখুঁতভাবে ফুটিয়ে তোলা হয়েছে।\n\n### জনপ্রিয় কথাসাহিত্য ও কালজয়ী চরিত্র\n\nবাংলাদেশের কথাসাহিত্যে হুমায়ূন আহমেদ এক যুগান্তকারী নাম। তাঁর সৃষ্ট চরিত্র 'হিমু' বা 'মিসির আলি' এবং উপন্যাস ও ছোটগল্পের সাবলীল ভাষা সাধারণ পাঠকদের মনে গভীর রেখাপাত করেছে। এ ছাড়া হাসান আজিজুল হকের গল্পে গ্রামীণ জীবনের বাস্তব চিত্র, সৈয়দ শামসুল হকের বহুমুখী সৃষ্টিশীলতা (কবিতা, নাটক, উপন্যাস) এবং আতাউর রহমান কিংবা ইমদাদুল হক মিলনের লেখা বাংলা সাহিত্যকে করেছে সমৃদ্ধ।\n\n### আধুনিক ধারা ও বৈশ্বিক প্রেক্ষাপট\n\nসমকালীন বাংলাদেশের সাহিত্যে উপন্যাসের পাশাপাশি কবিতা, ছোটগল্প, অনুবাদ সাহিত্য এবং মননশীল প্রবন্ধ চর্চা অত্যন্ত জোরালো। তরুণ প্রজন্মের লেখকেরা তাঁদের লেখনীতে নগর জীবনের টানাপোড়েন, প্রযুক্তি ও বিশ্বায়নের প্রভাব এবং মনস্তাত্ত্বিক জটিলতাগুলো তুলে ধরছেন। আন্তর্জাতিক অঙ্গনেও বাংলা সাহিত্যের অনুবাদ কাজের মাধ্যমে আমাদের লেখকদের পরিচিতি ক্রমান্বয়ে বৃদ্ধি পাচ্ছে।\n\n> **উপসংহার:**\n> বাংলাদেশের সাহিত্য কেবল বিনোদনের মাধ্যম নয়, এটি বাঙালির আত্মপরিচয়, প্রতিবাদ এবং মানবিক অনুভূতির অবিনশ্বর দলিল। অমর একুশে বইমেলা এবং নিয়মিত সাহিত্য চর্চা এই দেশের মানুষের মননশীলতাকে বাঁচিয়ে রেখেছে।",
+      "pdf_url": "/uploads/bangladesh-literature.pdf"
+    },
+    {
+      "id": "article-rohingya-crisis-bangladesh",
+      "slug": "rohingya-crisis-humanitarian-shelter-challenges",
+      "title": "বাংলাদেশে রোহিঙ্গা সংকট: মানবিক আশ্রয়, বহুমুখী চ্যালেঞ্জ ও ভবিষ্যতের পথচলা",
+      "title_bn": "Rohingya Crisis in Bangladesh: Humanitarian Shelter & Future Path",
+      "excerpt": "১২ লক্ষাধিক বলপূর্বক বাস্তুচ্যুত মিয়ানমার নাগরিকের আশ্রয়, আন্তর্জাতিক তহবিলের ঘাটতি, নিরাপত্তা ঝুঁকি এবং টেকসই প্রত্যাবাসনের বৈশ্বিক কূটনীতি।",
+      "reading_time_min": 8,
+      "tags": [
+        "রোহিঙ্গা",
+        "মানবাধিকার",
+        "ভূরাজনীতি",
+        "আন্তর্জাতিক"
+      ],
+      "status": "published",
+      "published_at": "2026-11-08T12:00:00Z",
+      "is_featured": false,
+      "is_sample": false,
+      "content": "### মানবিক ও ভূ-রাজনৈতিক বিশ্লেষণ\n\n**পরিস্থিতি পর্যালোচনা • ২০২৬**\n\n২০১৭ সালের আগস্টে মিয়ানমারের রাখাইন রাজ্যে ভয়াবহ সামরিক দমন-পীড়নের মুখে জীবন বাঁচাতে বাংলাদেশে আশ্রয় নিয়েছিল লাখ লাখ রোহিঙ্গা। সেই ঘটনার নয় বছর পেরিয়ে ২০২৬ সালের শেষ প্রান্তে এসেও বাংলাদেশে অবস্থানরত নিবন্ধিত রোহিঙ্গার সংখ্যা ১২ লাখ ছাড়িয়ে গেছে, যা তাদের বিশ্বের বৃহত্তম রাষ্ট্রহীন জনগোষ্ঠীতে পরিণত করেছে। মানবিক দৃষ্টিকোণ থেকে বাংলাদেশ এই বিপুল জনগোষ্ঠীকে আশ্রয় দিলেও দীর্ঘায়িত এই সংকট বর্তমানে মানবিক, অর্থনৈতিক, সামাজিক ও নিরাপত্তাজনিত এক গভীর জটিলতায় রূপ নিয়েছে।\n\n| সূচক | সর্বশেষ তথ্য (২০২৬) |\n| :--- | :--- |\n| **মোট নিবন্ধিত জনসংখ্যা** | ১২,০৬,৫২৮ জন (জাতিসংঘ ও সরকারি পরিসংখ্যান অনুযায়ী) |\n| **কক্সবাজার আশ্রয়শিবির** | মোট জনগোষ্ঠীর প্রায় ৯৭ শতাংশ (উখিয়া ও টেকনাফের ৩৩টি ক্যাম্পে) |\n| **ভাসানচর** | প্রায় ৩ শতাংশ (সরকারি ব্যবস্থাপনায় স্থানান্তরিত প্রায় ২৬,৭৭৫ জন) |\n| **জনমিতিক বিন্যাস** | প্রায় ৫২ শতাংশ শিশু এবং ৫১.৫ শতাংশ নারী |\n\n---\n\n### ২০২৬ সালের প্রধান চ্যালেঞ্জসমূহ\n\n* **আন্তর্জাতিক তহবিলের তীব্র সংকট:** বৈশ্বিক বৈদেশিক সহায়তায় বড় ধরনের কাটছাঁট এবং দাতা দেশগুলোর অনুদান কমে যাওয়ায় রোহিঙ্গাদের মানবিক সহায়তা কার্যক্রম মারাত্মকভাবে ব্যাহত হচ্ছে। খাদ্য রেশন, স্বাস্থ্যসেবা ও পুষ্টি কার্যক্রমে ঘাটতি দেখা দিয়েছে।\n* **শিক্ষা সংকট ও হারিয়ে যাওয়া প্রজন্ম:** আশ্রয়শিবিরে প্রায় ৫ লাখ স্কুলগামী রোহিঙ্গা শিশু থাকলেও তহবিল সংকটের কারণে একাধিকবার অস্থায়ী শিক্ষাকেন্দ্র বন্ধ হওয়ার উপক্রম হয়েছে।\n* **নিরাপত্তা ও মানবপাচারের ঝুঁকি:** বৈধ আয়ের পথ না থাকা এবং ক্যাম্পের অভ্যন্তরে হতাশা বৃদ্ধির কারণে অবৈধ পথে সাগর পাড়ি দেওয়ার ঝুঁকিপূর্ণ প্রবণতা বেড়েছে।\n* **স্থানীয় জনগোষ্ঠীর ওপর প্রভাব:** দীর্ঘ নয় বছর ধরে এই জনস্রোতের চাপে কক্সবাজারের বনভূমি উজাড়, ভূগর্ভস্থ পানির স্তর নিচে নেমে যাওয়া এবং স্থানীয় শ্রমবাজারে মজুরি হ্রাস সামাজিক অসন্তোষ তৈরি করেছে।\n\n> **উপসংহার:**\n> বাংলাদেশের একার পক্ষে এই বিশাল মানবিক বোঝা অনন্তকাল বহন করা সম্ভব নয়। রোহিঙ্গা সংকটের টেকসই সমাধানে আন্তর্জাতিক সম্প্রদায়ের জোরালো কূটনৈতিক হস্তক্ষেপ, মিয়ানমারের ওপর কার্যকর চাপ সৃষ্টি এবং প্রত্যাবাসনের অনুকূল পরিবেশ তৈরি করা এখন সময়ের সবচেয়ে জরুরি দাবি।",
+      "pdf_url": "/uploads/rohingya-crisis.pdf"
+    },
+    {
+      "id": "article-public-vs-private-universities",
+      "slug": "public-vs-private-universities-bangladesh",
+      "title": "বাংলাদেশে পাবলিক ও প্রাইভেট বিশ্ববিদ্যালয়: বাস্তব জীবন ও সামাজিক দৃষ্টিভঙ্গি",
+      "title_bn": "Public vs Private Universities in Bangladesh: Reality and Perceptions",
+      "excerpt": "সামাজিক মনস্তত্ত্ব, শিক্ষা ব্যয়, ক্যাম্পাস সংস্কৃতি ও কর্মক্ষেত্রের বাস্তবতা। পাবলিকের ঐতিহ্য ও মুক্তবুদ্ধির চর্চা বনাম প্রাইভেটের আধুনিক কারিকুলাম ও পেশাদারি দক্ষতার মেলবন্ধন।",
+      "reading_time_min": 7,
+      "tags": [
+        "উচ্চশিক্ষা",
+        "বিশ্ববিদ্যালয়",
+        "ক্যারিয়ার",
+        "সমাজচিন্তা"
+      ],
+      "status": "published",
+      "published_at": "2026-11-05T10:00:00Z",
+      "is_featured": false,
+      "is_sample": false,
+      "content": "### উচ্চশিক্ষা ও সমাজ পর্যালোচনা\n\n**সামাজিক মনস্তত্ত্ব, শিক্ষা ব্যয়, ক্যাম্পাস সংস্কৃতি ও কর্মক্ষেত্রের বাস্তবতা**\n\nবাংলাদেশের উচ্চশিক্ষা ব্যবস্থায় পাবলিক (সরকারি) এবং প্রাইভেট (বেসরকারি) বিশ্ববিদ্যালয়—এই দুটি ধারা পাশাপাশি চলমান। প্রতি বছর উচ্চমাধ্যমিক (এইচএসসি) পরীক্ষার পর লাখ লাখ শিক্ষার্থী এবং তাদের অভিভাবকদের সামনে সবচেয়ে বড় প্রশ্ন হয়ে দাঁড়ায়: কোন বিশ্ববিদ্যালয়ে ভর্তি হওয়া উচিত? আমাদের সমাজে এই দুই ধারার বিশ্ববিদ্যালয়কে ঘিরে দীর্ঘদিনের কিছু প্রচলিত ধারণা, আবেগ, অর্থনৈতিক বাস্তবতা এবং সামাজিক মর্যাদার হিসাব-নিকাশ কাজ করে।\n\n---\n\n### অর্থনৈতিক বাস্তবতা ও জীবনযাত্রার পার্থক্য\n\n| তুলনার ক্ষেত্র | পাবলিক বিশ্ববিদ্যালয় | প্রাইভেট বিশ্ববিদ্যালয় |\n| :--- | :--- | :--- |\n| **পড়াশোনার খরচ** | অত্যন্ত স্বল্প ব্যয়; মধ্যবিত্ত ও নিম্নবিত্ত পরিবারের জন্য সাশ্রয়ী। | টিউশন ফি তুলনামূলক অনেক বেশি; উচ্চবিত্ত ও সচ্ছল মধ্যবিত্তদের জন্য সহজলভ্য। |\n| **ক্যাম্পাস ও আবাসন** | বিশাল সবুজ ক্যাম্পাস ও আবাসিক হল থাকলেও গণরুম ও খাবারের মান নিয়ে ভোগান্তি থাকে। | শীতাতপ নিয়ন্ত্রিত আধুনিক শ্রেণিকক্ষ; তবে নিজস্ব আবাসন ও বড় খেলার মাঠের অভাব রয়েছে। |\n| **সময় ও সেশনজট** | কোনো কোনো বিভাগে এখনো সেশনজট বা প্রশাসনিক দীর্ঘসূত্রতা দেখা যায়। | নির্দিষ্ট সেমিস্টার ক্যালেন্ডার অনুসরণ করায় নির্ধারিত সময়েই ডিগ্রি সম্পন্ন হয়। |\n\n### ক্যাম্পাস জীবন ও ব্যক্তিগত বিকাশ\n\n* **পাবলিক বিশ্ববিদ্যালয়:** দেশের প্রত্যন্ত অঞ্চল থেকে আসা নানা শ্রেণি-পেশার শিক্ষার্থীরা একসাথে পড়াশোনা করেন। টিউশনি করে নিজের খরচ চালানো, হল জীবনের সংগ্রাম এবং সাংস্কৃতিক ও সামাজিক সংগঠনে যুক্ত থাকার মাধ্যমে শিক্ষার্থীদের মধ্যে বাস্তব জীবন সম্পর্কে গভীর অভিজ্ঞতা ও নেতৃত্বগুণ তৈরি হয়।\n* **প্রাইভেট বিশ্ববিদ্যালয়:** ইংরেজি মাধ্যমে পাঠদান, নিয়মিত প্রেজেন্টেশন, গ্রুপ ওয়ার্ক এবং ইন্ডাস্ট্রি-ভিত্তিক প্রজেক্টের ওপর জোর দেওয়া হয়। ফলে শিক্ষার্থীদের মধ্যে যোগাযোগ দক্ষতা, করপোরেট আচরণ এবং আধুনিক প্রযুক্তির ব্যবহারে বিশেষ পারদর্শিতা গড়ে ওঠে।\n\n> **উপসংহার:**\n> বাস্তব জীবনে কোনো বিশ্ববিদ্যালয়ই কারও সাফল্যের একমাত্র চাবিকাঠি নয়। পাবলিক বিশ্ববিদ্যালয়ের স্বল্প ব্যয় ও মুক্তবুদ্ধির চর্চা যেমন শিক্ষার্থীদের আত্মনির্ভরশীল করে তোলে, তেমনি প্রাইভেট বিশ্ববিদ্যালয়ের নিয়মানুবর্তিতা বৈশ্বিক প্রতিযোগিতার জন্য প্রস্তুত করে। প্রতিষ্ঠান যেটাই হোক না কেন—শিক্ষার্থীর নিজস্ব অধ্যবসায় ও দক্ষতাই তার প্রকৃত পরিচয় নির্ধারণ করে।",
+      "pdf_url": "/uploads/public-private-universities.pdf"
+    },
+    {
+      "id": "article-gaza-human-rights-struggle",
+      "slug": "daily-struggle-for-dignity-gaza-human-rights",
+      "title": "A Daily Struggle for Dignity: Human Rights and Civilian Life in Gaza",
+      "title_bn": "মর্যাদার দৈনন্দিন সংগ্রাম: গাজায় মানবাধিকার ও বেসামরিক নাগরিক জীবন",
+      "excerpt": "An in-depth humanitarian inquiry into the systematic erosion of fundamental rights to shelter, clean water, healthcare and education across the Gaza Strip.",
+      "reading_time_min": 7,
+      "tags": [
+        "Human Rights",
+        "Gaza",
+        "Humanitarian",
+        "International Law"
+      ],
+      "status": "published",
+      "published_at": "2026-11-01T08:00:00Z",
+      "is_featured": false,
+      "is_sample": false,
+      "content": "### Humanitarian & Human Rights Brief\n\n**Situation Overview • November 2026**\n\nAcross the Gaza Strip, fundamental human rights—including the right to adequate housing, clean water, food, healthcare, and education—remain severely compromised as more than 1.7 million displaced residents navigate the daily realities of survival. According to UN OCHA's Humanitarian Situation Report, ongoing hostilities, strict movement restrictions, and severe winter flooding have pushed civilian living conditions to a critical breaking point.\n\n| Humanitarian Sector | Reported Scale | Primary Impact on Civilian Life |\n| :--- | :--- | :--- |\n| **Displacement & Shelter** | 1.98 million in need | Three in four homes damaged or destroyed; over 40,000 family shelters damaged by winter storms. |\n| **Food Security** | 1.4 million acutely hungry | Approximately 100,000 women and children malnourished; unemployment exceeds 80 percent. |\n| **Education & Protection** | 100+ learning spaces hit | Severe storms damaged temporary learning spaces and 15 psychosocial support centers. |\n\n---\n\n### The Right to Adequate Shelter and Safety\n\nUnder international human rights law, every person is entitled to a safe and secure home. In Gaza, widespread infrastructural destruction and territorial restrictions have stripped families of this basic protection:\n\n* **Mass Displacement and Makeshift Shelters:** Roughly three out of every four homes in Gaza have been damaged or destroyed, leaving 1.98 million people in urgent need of shelter assistance. Most families live in overcrowded makeshift tents or inside the structural ruins of bombed-out buildings.\n* **Vulnerability to Winter Weather:** Heavy rains and coastal storms have flooded displacement camps, damaging tens of thousands of family shelters. Raw sewage mixed with rainwater routinely inundates tents, exposing children and the elderly to freezing temperatures and life-threatening health hazards.\n* **Restricted Movement:** Military demarcation zones cordoning off large segments of the territory prevent civilians from returning to safer inland areas, forcing displaced families to remain in exposed coastal dunes and flood-prone lowlands.\n\n### The Right to Food and Clean Water\n\n* **Widespread Hunger:** Access to sufficient nutrition is a foundational right, yet 1.4 million people face acute hunger, while approximately 100,000 women and children suffer from acute malnutrition.\n* **Water and Sanitation Crisis:** Damaged water networks and chronic fuel shortages have drastically curtailed clean water production. Piped water is frequently contaminated, forcing civilians to queue for hours for treated drinking water.\n\n### International Obligations and the Path Forward\n\n> As underscored by international human rights organizations, safeguarding civilian life requires urgent compliance with international humanitarian law: unimpeded humanitarian access, immediate entry of durable shelter and winter heating materials, restoration of civilian freedom of movement, and sustained international funding to prevent further preventable loss of life.",
+      "pdf_url": "/uploads/gaza-human-rights.pdf"
     }
   ],
   "research": [
     {
       "id": "research-1",
       "slug": "phenomenology-of-margins-and-marginalia",
-      "title": "The Epistemology of the Margin: Marginalia as Phenomenological Artifact [Sample]",
-      "title_bn": "প্রান্তিকের জ্ঞানতত্ত্ব: টীকাভাষ্যের রূপতাত্ত্বিক পাঠ [নমুনা]",
-      "abstract": "This paper investigates how marginal annotations written in the physical perimeters of books reveal an uncodified dialogue between reader and text. Analyzing historical readers' marginal notes from 18th-century philosophy texts, we demonstrate that peripheral commentary destabilizes the presumed hierarchy between authorial canon and subjective reception.",
+      "title": "প্রান্তিকের জ্ঞানতত্ত্ব: টীকাভাষ্যের রূপতাত্ত্বিক পাঠ",
+      "title_bn": "The Epistemology of the Margin: Marginalia as Phenomenological Artifact",
+      "abstract": "মুদ্রিত পাঠের সীমানায় পাঠকের হস্তলিখিত টীকাভাষ্য কীভাবে মূল পাঠ্যের আধিপত্যকে ভেঙে এক নিবিড় দার্শনিক সংলাপের জন্ম দেয়, তার রূপতাত্ত্বিক পাঠ।",
       "keywords": [
-        "Hermeneutics",
-        "Marginalia",
-        "Phenomenology",
-        "Textual Theory",
-        "Cognitive Aesthetics"
+        "জ্ঞানতত্ত্ব",
+        "ব্যাখ্যামূলক পাঠ",
+        "দর্শন",
+        "নান্দনিকতা"
       ],
       "status": "published",
       "pdf_url": "/samples/epistemology-of-the-margin.pdf",
       "published_at": "2026-10-28T12:00:00Z",
-      "is_sample": true,
-      "content": "### 1. Introduction & Theoretical Framing\nThe printed text has long maintained an aura of definitive authority. Bound, typeset, and sealed, the codex presents itself as a monologic discourse. However, when an individual reader takes up an ink pen and marks the blank margin—challenging an assumption, querying an etymology, or underscoring a doubt—the static monologue is fractured into an intimate dialectic.\n\n### 2. The Spatial Politics of the Margin\nWhitespace in book design is rarely neutral. Historically conceived as an aesthetic buffer to protect the reading eye from typographical fatigue, the margin simultaneously operates as an unregulated sanctuary for dissent.\n\n### 3. Conclusion\nRather than treating marginalia as vandalism or trivial sentiment, we argue for its elevation to a primary phenomenological source: the tangible footprint of human consciousness wrestling with form."
+      "is_sample": false,
+      "content": "### ১. ভূমিকা ও তাত্ত্বিক কাঠামো\n\nমুদ্রিত বই দীর্ঘকাল ধরে এক চূড়ান্ত কর্তৃত্বের স্মারক হিসেবে বিবেচিত হয়ে আসছে। কিন্তু যখন একজন সচেতন পাঠক হাতের কলম তুলে নিয়ে পৃষ্ঠার শ্বেত প্রান্তিকে প্রশ্নচিহ্ন আঁকেন কিংবা বিকল্প অর্থ প্রস্তাব করেন, তখন একমুখী মনোলগ একটি বহুস্বরিক সংলাপে রূপান্তরিত হয়।"
     },
     {
       "id": "research-2",
       "slug": "computational-solitude-in-algorithmic-societies",
-      "title": "Algorithmic Asynchrony: The Structural Erosion of Contemplative Time [Sample]",
-      "title_bn": "অ্যালগরিদমিক অসমকালীনতা ও মননশীল সময়ের সংকট [নমুনা]",
-      "abstract": "A critical inquiry into how real-time algorithmic feedback loops distort human perception of duration. By substituting continuous micro-intervals of reward for expansive stretches of boredom, algorithmic architectures eliminate the cognitive incubation periods necessary for synthetic philosophical synthesis.",
+      "title": "অ্যালগরিদমিক অসমকালীনতা ও মননশীল সময়ের সংকট",
+      "title_bn": "Algorithmic Asynchrony: The Structural Erosion of Contemplative Time",
+      "abstract": "রিয়েল-টাইম নোটিফিকেশন ইঞ্জিন কীভাবে মানুষের দীর্ঘমেয়াদী মননশীল চিন্তার জৈব সময়কে ভেঙে টুকরো টুকরো করে ফেলছে, তার দার্শনিক অন্বেষণ।",
       "keywords": [
-        "Temporal Ethics",
-        "Algorithmic Culture",
-        "Attention Economy",
-        "Digital Philosophy"
+        "ডিজিটাল দর্শন",
+        "মনোযোগের অর্থনীতি",
+        "সময়তত্ত্ব"
       ],
       "status": "ongoing",
       "published_at": "2026-11-12T08:30:00Z",
-      "is_sample": true,
-      "content": "### Abstract & Working Hypotheses\nThis ongoing research project maps the degradation of contemplative duration under ubiquitous mobile notification engines. We hypothesize that synthetic contemplation requires non-teleological time: hours where the mind produces no measurable output and expects no feedback."
-    },
-    {
-      "id": "research-3",
-      "slug": "poetics-of-water-in-eastern-bengal",
-      "title": "Fluids of Being: The River as Metaphysical Topology in Eastern Bengal [Sample]",
-      "title_bn": "অস্তিত্বের জলরাশি: পূর্ব বাংলার নদীকেন্দ্রিক অধিবিদ্যা [নমুনা]",
-      "abstract": "Examining how shifting alluvial topography (চর ও ভাঙন) fundamentally shapes the Bengali understanding of fate, transience, and spiritual surrender compared to Western continental philosophy grounded in stone and permanent borders.",
-      "keywords": [
-        "Ecophilosophy",
-        "Bengal",
-        "Ontology of Water",
-        "Geopoetics"
-      ],
-      "status": "published",
-      "pdf_url": "/samples/fluids-of-being.pdf",
-      "published_at": "2026-09-10T11:00:00Z",
-      "is_sample": true,
-      "content": "### Geographical Determinism in Metaphysics\nWhere land vanishes overnight beneath monsoon swells, permanence is recognized as a delusion. The human soul in Eastern Bengal understands its existence not as an enduring fortress, but as an anchored skiff."
+      "is_sample": false,
+      "content": "### কর্ম-অনুসিদ্ধান্ত\n\nএই গবেষণায় আমরা পরীক্ষা করছি কীভাবে নিরবচ্ছিন্ন মাইক্রো-পুরস্কার মননশীল একাকীত্বের স্থান দখল করে নিচ্ছে এবং গভীর চিন্তার পরিসরকে সংকুচিত করছে।"
     }
   ],
   "posters": [
     {
       "id": "poster-1",
       "slug": "silence-before-syllable",
-      "title": "Silence Before Syllable [Sample]",
-      "title_bn": "শব্দের পূর্বে নৈশব্দ্য [নমুনা]",
-      "description": "Typographic meditation on typographic space and philosophical quietude. Minimalist ink on warm handmade paper.",
+      "title": "শব্দের পূর্বে নৈশব্দ্য",
+      "title_bn": "Silence Before Syllable",
+      "description": "টাইপোগ্রাফিক স্পেস এবং দার্শনিক নিস্তব্ধতার দৃশ্যরূপ। হ্যান্ডমেড কাগজের ওপর গভীর কালির স্ক্রিনপ্রিন্ট।",
       "image_url": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=1200&q=80",
       "high_res_url": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=2400&q=95",
-      "dimensions": "24 x 36 in / Screenprint on Archival Cotton",
+      "dimensions": "২৪ x ৩৬ ইঞ্চি / আর্চাইভাল সুতির কাগজ",
       "published_at": "2026-10-18T15:00:00Z",
-      "is_sample": true
+      "status": "published",
+      "is_sample": false
     },
     {
       "id": "poster-2",
       "slug": "the-geometry-of-solitude",
-      "title": "The Geometry of Solitude [Sample]",
-      "title_bn": "নির্জনতার জ্যামিতি [নমুনা]",
-      "description": "An architectural exploration of light hitting an empty study corner at 3:00 AM. Deep midnight navy and warm brass leaf.",
+      "title": "নির্জনতার জ্যামিতি",
+      "title_bn": "The Geometry of Solitude",
+      "description": "গভীর নিশীথে পাঠগৃহের এক কোণে আলোর রেখাপাত। গভীর নীল এবং তাম্রপাত মিশ্রণ।",
       "image_url": "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=1200&q=80",
       "high_res_url": "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=2400&q=95",
-      "dimensions": "18 x 24 in / Woodblock Print",
+      "dimensions": "১৮ x ২৪ ইঞ্চি / কাঠের ব্লকপ্রিন্ট",
       "published_at": "2026-09-25T11:30:00Z",
-      "is_sample": true
-    },
-    {
-      "id": "poster-3",
-      "slug": "river-and-nightfall",
-      "title": "River and Nightfall [Sample]",
-      "title_bn": "নদী ও গোধূলি [নমুনা]",
-      "description": "Visual study of the Meghna river in twilight, Bengali calligraphic verse blended into monochrome silver reflections.",
-      "image_url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
-      "high_res_url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2400&q=95",
-      "dimensions": "20 x 30 in / Giclée Fine Art Print",
-      "published_at": "2026-09-05T18:00:00Z",
-      "is_sample": true
-    },
-    {
-      "id": "poster-4",
-      "slug": "constellations-of-thought",
-      "title": "Constellations of Thought [Sample]",
-      "title_bn": "ভাবনার নক্ষত্রমণ্ডল [নমুনা]",
-      "description": "Astronomical map of philosophical categories, showing intersecting domains of ethics, ontology, and poetic intuition.",
-      "image_url": "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?auto=format&fit=crop&w=1200&q=80",
-      "high_res_url": "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?auto=format&fit=crop&w=2400&q=95",
-      "dimensions": "24 x 36 in / Metallic Foil on Charcoal Board",
-      "published_at": "2026-08-14T10:00:00Z",
-      "is_sample": true
+      "status": "published",
+      "is_sample": false
     }
   ],
   "books": [
     {
       "id": "book-1",
       "slug": "the-anatomy-of-contemplation",
-      "title": "The Anatomy of Contemplation [Sample]",
-      "subtitle": "Dialogues on Solitude, Time, and the Interior Horizon",
-      "description": "A philosophical inquiry into the conditions under which authentic human reflection survives in an age of accelerated distraction. Structured as seven meditative treatises.",
+      "title": "নিবিষ্ট চিন্তার ব্যবচ্ছেদ",
+      "title_bn": "The Anatomy of Contemplation",
+      "subtitle": "একাকীত্ব, সময় ও অন্তর্জগতের দিগন্ত নিয়ে সংলাপ",
+      "description": "চঞ্চলতার যুগে কীভাবে প্রামাণিক মানবিক মনন টিকে থাকে, তার সাতটি নিবিড় দার্শনিক অধ্যায়।",
       "cover_image_url": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80",
       "status": "published",
       "published_at": "2026-10-01T10:00:00Z",
-      "is_sample": true,
+      "is_sample": false,
       "chapters": [
         {
           "id": "chap-1",
           "book_id": "book-1",
           "chapter_number": 1,
           "slug": "the-perimeter-of-silence",
-          "title": "Chapter I: The Perimeter of Silence",
+          "title": "প্রথম অধ্যায়: নীরবতার পরিধি",
           "reading_time_min": 8,
           "created_at": "2026-10-01T10:00:00Z",
-          "content": "### The Threshold of the Study\n\nBefore one can think, one must construct a room in which thinking is not an emergency. For centuries, the monastic cell and the writer's study shared a common virtue: they were enclosures explicitly designed to keep the triviality of the world at bay.\n\nWhen you cross into the study at midnight, you leave behind the frantic exchange of social debts. The books along the wall do not demand an immediate reply. They have waited four hundred years; they can wait another evening.\n\n```\nOuter World  ──[ Threshold of Silence ]──>  The Contemplative Chamber\n(Velocity)                                  (Depth & Duration)\n```\n\n### The First Movement: Extinguishing the False Lights\n\nModern humanity has populated its hours with artificial suns. We carry in our pockets glowing slabs that promise connection while subtly amputating our capacity for depth. \n\nThe first discipline of contemplation is the willful shutting down of these micro-distractions. Let the shadows lengthen across the carpet. Let the clock on the mantle tick with deliberate, unhurried measure.\n\nIn this subdued atmosphere, the mind initially rebels. It demands novelty; it craves a sudden dopamine spike. If one can sit through the first twenty minutes of restlessness without surrendering, a remarkable shift occurs: the baseline of consciousness lowers, and the quiet begins to speak."
+          "content": "### পড়ার টেবিলের সীমানা\n\nচিন্তা করার পূর্বে এমন একটি ঘর নির্মাণ করা প্রয়োজন যেখানে চিন্তা কোনো জরুরি অবস্থা নয়। শত শত বছর ধরে সন্ন্যাসীর কুটির ও লেখকের পাঠগৃহের সাধারণ শক্তি ছিল এই যে, তারা পৃথিবীর তুচ্ছ চঞ্চলতাকে দূরে রাখত।"
         },
         {
           "id": "chap-2",
           "book_id": "book-1",
           "chapter_number": 2,
           "slug": "on-the-weight-of-words",
-          "title": "Chapter II: On the Weight of Words",
+          "title": "দ্বিতীয় অধ্যায়: শব্দের ভার",
           "reading_time_min": 10,
           "created_at": "2026-10-02T10:00:00Z",
-          "content": "### The Currency of Language\n\nLanguage is the most delicate instrument we possess, yet we treat it like disposable plastic. Every day, trillions of careless phrases are flung across digital wires—half-thought, unweighed, discarded before the sun sets.\n\nA writer must re-learn the sacred density of words. In ancient Sanskrit and classical Hebrew, a word was never merely a label for an object; it was a manifestation of the object's essential vibration.\n\n> *\"To speak a word truthfully is to assume moral responsibility for the universe you have summoned into being.\"*\n\n### The Craft of Elimination\n\nTrue style is not the ornamentation of thought, but the merciless pruning of everything that is not indispensable. When Rafi writes, the wastepaper basket is always fuller than the manuscript desk. \n\nIf a paragraph can survive without an adverb, cast the adverb out. If an idea can be illuminated by an exact verb, discard the three adjectives that were leaning against it like crutches.\n\nWhen language is restored to its proper weight, even a sentence of six words can anchor a wandering heart for a decade."
-        },
-        {
-          "id": "chap-3",
-          "book_id": "book-1",
-          "chapter_number": 3,
-          "slug": "the-dialectic-of-dusk",
-          "title": "Chapter III: The Dialectic of Dusk",
-          "reading_time_min": 7,
-          "created_at": "2026-10-03T10:00:00Z",
-          "content": "### The In-Between Hour\n\nDusk is the most philosophical hour of the day. It belongs neither to the harsh pragmatism of daylight nor to the impenetrable mystery of deep night. It is a frontier, a twilight seam where the outlines of objects soften and dissolve.\n\nAt dusk, the mind naturally turns toward retrospection. What was gained today? What evaporated without a trace?\n\nTo sit quietly by an open window during twilight is to witness the natural world surrender its claims without panic. The trees do not contest the fading light; the birds return to their perches with an instinct that requires no philosophy to justify itself."
-        },
-        {
-          "id": "chap-4",
-          "book_id": "book-1",
-          "chapter_number": 4,
-          "slug": "the-eternal-return-of-solitude",
-          "title": "Chapter IV: The Eternal Return of Solitude",
-          "reading_time_min": 11,
-          "created_at": "2026-10-04T10:00:00Z",
-          "content": "### The Inevitable Return\n\nNo matter how deeply we love, no matter how tightly we weave ourselves into the fabric of human society, each of us remains an unrepeatable solitude. We are born into our own skin, and when we close our eyes for the final time, it is our own quiet darkness we encounter.\n\nThis truth need not be a source of despair. On the contrary: when one accepts solitude as the foundational condition of human life, loneliness loses its terror. One no longer expects another person to save them from being themselves.\n\nInstead, relationship becomes an encounter between two sovereign landscapes—two quiet kingdoms meeting across a tranquil river."
-        }
-      ]
-    },
-    {
-      "id": "book-2",
-      "slug": "reflections-on-the-bengal-delta",
-      "title": "Reflections on the Bengal Delta [Sample]",
-      "title_bn": "গাঙ্গেয় বদ্বীপের ভাবনা [নমুনা]",
-      "subtitle": "Essays on Alluvial Memory and Riverine Philosophy",
-      "description": "An exploration of how the shifting rivers and monsoonal tides of Bengal give birth to a distinctive ontological surrender.",
-      "cover_image_url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
-      "status": "published",
-      "published_at": "2026-08-15T12:00:00Z",
-      "is_sample": true,
-      "chapters": [
-        {
-          "id": "chap-b2-1",
-          "book_id": "book-2",
-          "chapter_number": 1,
-          "slug": "the-birth-of-silt",
-          "title": "প্রথম অধ্যায়: পলির জন্ম ও বিনাশ",
-          "reading_time_min": 6,
-          "created_at": "2026-08-15T12:00:00Z",
-          "content": "### নদীর সন্তান\n\nপলিমাটির দেশে মানুষের স্থায়ী কোনো সীমানা থাকে না। আজ যে জমি ফসলে সবুজ, কাল সেখানে পদ্মা বা মেঘনার তীব্র ভাঙন। এই অস্থির ভূগোলের ওপর দাঁড়িয়ে আমরা যে জীবন রচনা করি, তার পরতে পরতে থাকে অনিত্যতার পাঠ।\n\nপাশ্চাত্যের চিন্তা তৈরি হয়েছে পাথুরে পাহাড়ি ভূমিতে, যেখানে রোমান দেয়াল দুই হাজার বছর টিকে থাকে। কিন্তু আমাদের বাংলার দর্শন তৈরি হয়েছে জলে ও কাদায়। এখানে সৃষ্টি এবং ধ্বংস একাকার হয়ে বয়ে যায় অবিরাম স্রোতে।"
+          "content": "### ভাষার মর্যাদা\n\nভাষা মানুষের সবচেয়ে সংবেদনশীল হাতিয়ার। একজন লেখককে প্রতিটি শব্দের আত্মিক ওজন পুনরাবিষ্কার করতে হয়।"
         }
       ]
     }
   ],
   "featured": {
-    "type": "book",
-    "title": "The Anatomy of Contemplation",
-    "subtitle": "Dialogues on Solitude, Time, and the Interior Horizon",
-    "slug": "the-anatomy-of-contemplation",
-    "excerpt": "A philosophical inquiry into the conditions under which authentic human reflection survives in an age of accelerated distraction.",
-    "badge": "Featured Book",
-    "link": "/books/the-anatomy-of-contemplation"
+    "type": "article",
+    "title": "smart nation",
+    "subtitle": "",
+    "slug": "smart-nation",
+    "excerpt": "",
+    "badge": "নির্বাচিত রচনা",
+    "link": "/articles/smart-nation"
   }
 }

@@ -9,7 +9,7 @@ interface LatestFeedProps {
 }
 
 export function LatestFeed({ items }: LatestFeedProps) {
-  const getTypeBadge = (type: string) => {
+  const getTypeBadge = (type: string = 'article') => {
     switch (type) {
       case 'poem':
         return { label: 'Poem', icon: Feather, color: 'bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border-emerald-500/20' };
@@ -38,6 +38,8 @@ export function LatestFeed({ items }: LatestFeedProps) {
         return `/posters/${item.slug}`;
       case 'book':
         return `/books/${item.slug}`;
+      default:
+        return '/';
     }
   };
 
@@ -53,6 +55,8 @@ export function LatestFeed({ items }: LatestFeedProps) {
         return item.description;
       case 'book':
         return item.subtitle || (item.description || '').slice(0, 140) + '...';
+      default:
+        return '';
     }
   };
 

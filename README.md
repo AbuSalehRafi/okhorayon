@@ -1,152 +1,91 @@
-# Rafi — Writer, Essayist & Philosopher Personal Website
+# অক্ষরায়ণ (Okhorayon) — চিন্তাশীল রচনা ও পাঠাগার
 
-A calm, serious, and philosophical personal website built for Rafi. Designed for contemplation, deep reading, and scholarly archiving.
+> "নীরবতার প্রান্তে চিন্তার বিস্তার; যেখানে ভাব এসে অক্ষরের রূপ নেয়।"
 
----
-
-## 🌟 Key Features
-
-1. **Dashboard Home Page:**
-   - Hero with bilingual name & philosophy statement.
-   - Unified search across all content types.
-   - **Continue Reading** widget that automatically remembers and resumes the last book chapter.
-   - Featured piece slot.
-   - 5 summary panels (Poems, Articles, Research, Posters, Books) with total counts and 3 newest entries.
-   - Interstitial philosopher quotes editable from the admin portal.
-   - Latest dispatches feed across all 5 content disciplines.
-
-2. **Five Content Disciplines:**
-   - **Poems:** Short meditative verse preserving exact stanza spacing and line breaks.
-   - **Articles:** Long-form essays with reading time estimation, tags, and reading progress bar.
-   - **Personal Research:** Academic treatises with abstracts, keywords, status badges (*Ongoing* vs *Published*), and PDF downloads.
-   - **Posters:** Visual artwork gallery with a full-size modal lightbox and high-resolution download button.
-   - **Books & Distraction-Free Reader:** Multi-chapter volumes with Table of Contents, chapter pagination, progress bar, adjustable font size (`A-`, `A`, `A+`, `A++`), and Light / Sepia / Dark theme toggle.
-
-3. **Philosophical Design & Typography:**
-   - **Palette:** Soft warm-grey paper for light mode (`#faf8f5`), midnight ink-blue for dark mode (`#080c14`), and warm parchment for reading (`#fbf5e8`).
-   - **Accent:** Scholarly antique brass/gold (`#b5873a`). Meets WCAG AA contrast.
-   - **Bilingual Support:** Merriweather & Georgia serif for English; Noto Serif Bengali and Noto Sans Bengali for Bengali.
-   - **Texture:** Faint paper grain and celestial star-field background.
-   - **Motion:** Gentle fades, prefers-reduced-motion compliance.
-
-4. **Private Admin Portal (`/admin`):**
-   - Password-protected author sanctuary (default: `rafi2026`).
-   - Markdown editor with live split-pane preview.
-   - Reorder book chapters with up/down arrows.
-   - Image and PDF manuscript upload.
-   - Full CRUD for poems, essays, research, posters, books, and quotes.
-
-5. **SEO & Accessibility:**
-   - Dynamic `sitemap.xml` and `robots.txt`.
-   - RSS 2.0 Feed at `/rss.xml` for articles and poems.
-   - Fully semantic HTML, keyboard accessible, visible focus states.
+**অক্ষরায়ণ (Okhorayon)** হলো লেখক, চিন্তক ও গবেষক রাফির নিজস্ব মননশীল পাঠাগার ও আর্কাইভ। এটি শান্ত, নিবিষ্ট ও নান্দনিক পরিবেশ নিশ্চিত করার জন্য তৈরি একটি আধুনিক প্ল্যাটফর্ম।
 
 ---
 
-## 🚀 Beginner's Setup Guide: Step-by-Step
+## 🌟 প্রধান বৈশিষ্ট্যসমূহ (Key Features)
 
-### 1. Local Development (Instant Out-of-the-Box)
+1. **এককেন্দ্রিক কনফিগারেশন (`lib/site-config.ts`):**
+   - সাইটের নাম, প্রতিবর্ণীকরণ, দর্শন, স্লোগান, নেভিগেশন লিংক এবং অ্যাডমিন পাসওয়ার্ড সবই একটি মাত্র ফাইল থেকে নিয়ন্ত্রিত হয়।
+   - বাংলা প্রধান নাম হিসেবে **অক্ষরায়ণ** এবং ইংরেজি প্রতিবর্ণীকরণ হিসেবে **Okhorayon** পরিবেশিত হয়।
 
-The website is engineered with an intelligent offline mock layer (`lib/starter-data.ts`). You can run and test all features immediately without configuring any cloud accounts first!
+2. **হোমপেজ ড্যাশবোর্ড (Clean & Contemplative Home):**
+   - লেখক পরিচিতি ও অ্যাডমিন থেকে পরিবর্তনযোগ্য দর্শনের সংক্ষিপ্ত বাক্য।
+   - পুরো সাইটের আর্কাইভ জুড়ে অনুসন্ধানের একক সার্চ বার।
+   - পাঁচটি শাখার (প্রবন্ধ, কবিতা, গবেষণা, পোস্টার, বই) প্রতিটিতে ৩টি করে সর্বশেষ সংযোজিত রচনা ও "সকল দেখুন" লিংক।
+   - শান্ত ও গভীর দার্শনিক উক্তি (Quotes)।
+   - যেখানে শেষ করেছিলেন সেখান থেকে বই পড়া চালিয়ে যাওয়ার সুবিধা (Continue Reading)।
 
-1. Install dependencies:
-   ```bash
-   npm install
-   ```
+3. **পাঁচটি স্বতন্ত্র শাখা (Five Disciplines):**
+   - **প্রবন্ধ (Articles):** দীর্ঘ গভীর রচনা, পাঠের সময় অনুমান, বিষয়ভিত্তিক ট্যাগ, এবং সরাসরি ইন-ব্রাউজার পিডিএফ রিডার ও ডাউনলোড বোতাম। ব্যবহারকারীর আপলোডকৃত ৮টি প্রবন্ধ এখানে সুন্দরভাবে বিন্যস্ত আছে।
+   - **কবিতা (Poems):** পঙ্‌ক্তি ও স্তবকের বিন্যাস অক্ষুণ্ণ রেখে সংকলন।
+   - **ব্যক্তিগত গবেষণা (Personal Research):** গবেষণার সারসংক্ষেপ (Abstract), চলমান/প্রকাশিত স্ট্যাটাস এবং গবেষণাপত্র (PDF) রিডার।
+   - **পোস্টার গ্যালারি (Posters):** টাইপোগ্রাফিক ও দৃশ্যশিল্পের গ্রিড, লাইটবক্স প্রিভিউ এবং হাই-রেজোলিউশন ডাউনলোড।
+   - **বই ও পুস্তিকা (Books):** পূর্ণাঙ্গ অনলাইন বই, সূচিপত্র, অধ্যায়ভিত্তিক স্বস্তিদায়ক রিডার (ফন্ট সাইজ ও থিম পরিবর্তনযোগ্য)।
 
-2. Run the local development server:
-   ```bash
-   npm run dev
-   ```
-
-3. Open your browser and navigate to:
-   - Public Website: [http://localhost:3000](http://localhost:3000)
-   - Admin Portal: [http://localhost:3000/admin](http://localhost:3000/admin) (Password: `rafi2026`)
-   - RSS Feed: [http://localhost:3000/rss.xml](http://localhost:3000/rss.xml)
-
----
-
-### 2. Setting Up Supabase (Database, Auth, Storage)
-
-When you are ready to connect to a live cloud database:
-
-#### Step A: Create a Supabase Project
-1. Go to [https://supabase.com](https://supabase.com) and sign up for free.
-2. Click **New project**, choose an organization, name your project (e.g. `rafi-writer`), set a secure database password, and choose your preferred region.
-
-#### Step B: Run the SQL Schema
-1. In your Supabase dashboard, click **SQL Editor** on the left menu.
-2. Click **New query**.
-3. Copy the entire contents of `supabase/schema.sql` from this repository and paste it into the editor.
-4. Click **Run**.
-   - *This will automatically create all tables (`poems`, `articles`, `research`, `posters`, `books`, `book_chapters`, `interstitial_quotes`, `profiles`), indexes, Row Level Security (RLS) policies, and storage buckets (`media` and `documents`).*
-
-#### Step C: Configure Local Environment Variables
-1. In your Supabase dashboard, go to **Project Settings** (gear icon) -> **API**.
-2. Find:
-   - **Project URL**
-   - **Project API Keys** -> `anon` / `public`
-3. In the project root, create a file named `.env.local`:
-   ```env
-   NEXT_PUBLIC_SITE_URL=http://localhost:3000
-   NEXT_PUBLIC_SUPABASE_URL=https://your-project-id.supabase.co
-   NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key-here
-   NEXT_PUBLIC_ADMIN_PASSWORD=rafi2026
-   ```
+4. **একক ও সহজ পিডিএফ আপলোড অ্যাডমিন প্যানেল (`/admin`):**
+   - পাসওয়ার্ড সুরক্ষিত (ডিফল্ট: `rafi2026`)।
+   - ড্র্যাগ-অ্যান্ড-ড্রপ পিডিএফ বা ছবি আপলোড ফাইল প্রিভিউ ও প্রগ্রেস বার সহ।
+   - কভার ছবি আপলোড ঐচ্ছিক; আপলোড না করলে স্বয়ংক্রিয়ভাবে প্রথম পৃষ্ঠা/ব্র্যান্ডেড কভার তৈরি হয়।
+   - যেকোনো রচনার খসড়া (Draft) অথবা প্রকাশিত (Published) অবস্থা নির্বাচন ও Featured নির্ধারণ।
+   - সব রচনার সমন্বিত টেবিল: সার্চ, টাইপ ফিল্টার এবং এক ক্লিকে এডিট, ডিলিট, ও Publish/Unpublish করার সুবিধা।
+   - কোড পরিবর্তন ছাড়াই অ্যাডমিন থেকে কোনো কিছু সেভ বা ডিলিট করলেই সাথে সাথে তা মূল সাইটে সরাসরি আপডেট হয়ে যায় (অন-ডিমান্ড রিভ্যালিডেশন)।
 
 ---
 
-### 3. Deploying to Vercel
+## 📋 অ্যাডমিন প্যানেল থেকে নতুন রচনা আপলোডের চেকলিস্ট (Upload Checklist)
 
-1. Push this repository to your GitHub account:
-   ```bash
-   git init
-   git add .
-   git commit -m "feat: complete production-ready writer website for Rafi"
-   git branch -M main
-   git remote add origin https://github.com/your-username/rafi-writer.git
-   git push -u origin main
-   ```
+অ্যাডমিন প্যানেলে প্রবেশ করুন: `http://localhost:3000/admin` (পাসওয়ার্ড: `rafi2026`)
+এবং উপরের ডানদিকের **"নতুন রচনা আপলোড (Upload)"** বোতামে ক্লিক করুন:
 
-2. Sign in to [https://vercel.com](https://vercel.com).
-3. Click **Add New...** -> **Project**.
-4. Import your `rafi-writer` repository.
-5. In **Environment Variables**, add:
-   - `NEXT_PUBLIC_SITE_URL`: `https://your-domain.vercel.app`
-   - `NEXT_PUBLIC_SUPABASE_URL`: (from your Supabase dashboard)
-   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`: (from your Supabase dashboard)
-   - `NEXT_PUBLIC_ADMIN_PASSWORD`: (your chosen admin password)
-6. Click **Deploy**. Vercel will build and launch your site globally in seconds!
+### ১. নতুন প্রবন্ধ (Article) যুক্ত করার নিয়ম:
+1. শাখা ড্রপডাউন থেকে **"প্রবন্ধ (Article / Essay)"** নির্বাচন করুন।
+2. শিরোনাম লিখুন (বাংলা বা ইংরেজি)।
+3. সংক্ষিপ্ত বিবরণ / সারসংক্ষেপ লিখুন।
+4. প্রকাশনার তারিখ ও ট্যাগ দিন (কমা দিয়ে আলাদা করুন, যেমন: `সমাজ, শিক্ষা, ঢাকা`)।
+5. আপনার প্রবন্ধের **PDF ফাইলটি ড্র্যাগ করে বক্সে ফেলুন** অথবা ক্লিক করে নির্বাচন করুন।
+6. (ঐচ্ছিক) চাইলে কভার ছবি দিতে পারেন, না দিলে অটোমেটিক কভার তৈরি হবে।
+7. স্ট্যাটাস **Published** রেখে **"সংরক্ষণ ও প্রকাশ করুন"**-এ ক্লিক করুন।
+8. সাথে সাথে `/articles` পেজে প্রবন্ধটি পিডিএফ রিডার ও ডাউনলোড বোতামসহ লাইভ হয়ে যাবে।
+
+### ২. নতুন কবিতা (Poem) যুক্ত করার নিয়ম:
+1. শাখা নির্বাচন করুন: **"কবিতা (Poem / Verse)"**।
+2. কবিতার শিরোনাম লিখুন।
+3. কবিতার পঙ্‌ক্তিমালা লিখুন বা পিডিএফ পান্ডুলিপি আপলোড করুন।
+4. স্ট্যাটাস নির্বাচন করে সংরক্ষণ করুন।
+
+### ৩. নতুন গবেষণা (Personal Research) যুক্ত করার নিয়ম:
+1. শাখা নির্বাচন করুন: **"গবেষণা (Personal Research)"**।
+2. পেপারের শিরোনাম লিখুন।
+3. **Abstract / সারসংক্ষেপ** বক্সে গবেষণার মূল সারমর্ম লিখুন।
+4. স্ট্যাটাস নির্বাচন করুন: **Ongoing** (চলমান কাজ) অথবা **Published** (প্রকাশিত মনোগ্রাফ)।
+5. সম্পূর্ণ গবেষণাপত্রের **PDF ফাইল আপলোড করুন**।
+6. সংরক্ষণ করলে পেপারটি `/research` পেজে লাইভ হয়ে যাবে।
+
+### ৪. নতুন পোস্টার (Poster) যুক্ত করার নিয়ম:
+1. শাখা নির্বাচন করুন: **"পোস্টার (Poster / Artwork)"**।
+2. পোস্টারের শিরোনাম লিখুন।
+3. পোস্টারের ছবি (JPG, PNG, WebP) অথবা ভেক্টর PDF ফাইলটি আপলোড করুন।
+4. সংরক্ষণ করলেই `/posters` গ্যালারিতে লাইটবক্সসহ প্রদর্শিত হবে।
+
+### ৫. নতুন বই (Book) যুক্ত করার নিয়ম:
+1. শাখা নির্বাচন করুন: **"বই (Book / Volume)"**।
+2. বইয়ের নাম ও পরিচিতি লিখুন।
+3. বইয়ের পূর্ণাঙ্গ PDF আপলোড করুন (অথবা অধ্যায়ভিত্তিক সূচিপত্র যুক্ত করুন)।
+4. কভার ছবি নির্বাচন করুন।
+5. সংরক্ষণ করলেই `/books` পেজে নতুন বইটি রিডার ও ডাউনলোড অপশনসহ চলে আসবে।
 
 ---
 
-## 📂 Project Structure
+## 🛠️ প্রযুক্তিগত তথ্যাবলি (Tech Stack)
 
-```text
-├── app/
-│   ├── (public)/
-│   │   ├── poems/               # Poems listing and single poem views
-│   │   ├── articles/            # Long-form essays with reading progress
-│   │   ├── research/            # Academic research & PDF manuscripts
-│   │   ├── posters/             # Poster gallery & lightbox
-│   │   ├── books/               # Multi-chapter distraction-free book reader
-│   │   └── search/              # Unified site-wide search
-│   ├── admin/                   # Secure authoring sanctuary & Markdown editors
-│   ├── rss.xml/                 # RSS 2.0 Syndication
-│   ├── sitemap.ts               # Dynamic sitemap
-│   ├── globals.css              # Custom styling, fonts, and dark/light palettes
-│   └── page.tsx                 # The home dashboard
-├── components/
-│   ├── dashboard/               # Hero, summary panels, continue-reading card
-│   ├── reader/                  # Distraction-free reader & font/theme controls
-│   ├── posters/                 # Lightbox and image grid
-│   ├── markdown/                # Typography-optimized Markdown renderer
-│   └── admin/                   # Split-pane live Markdown authoring editor
-├── lib/
-│   ├── starter-data.ts          # Sample entries in English & Bengali (marked [Sample])
-│   ├── types.ts                 # TypeScript type interfaces
-│   ├── utils.ts                 # Reading time, Bengali numerals, formatting
-│   └── supabase/                # API client & queries
-└── supabase/
-    └── schema.sql               # Full PostgreSQL tables & RLS security rules
-```
+- **ফ্রেমওয়ার্ক:** Next.js 14 (App Router) + TypeScript
+- **স্টাইলিং:** Tailwind CSS (Dark Mode, Light Warm Paper Mode, Sepia Reader Mode)
+- **আইকন:** Lucide React
+- **টাইপোগ্রাফি:** Noto Serif Bengali, Noto Sans Bengali, Merriweather, Inter
+- **ফাইল স্টোরেজ:** `public/uploads/` (সরাসরি অ্যাক্সেসযোগ্য ও পারসিস্টেন্ট)
+- **ডাটাবেস:** `data/content.json` (তাত্ক্ষণিক রি-ভ্যালিডেশন সহ) এবং প্রয়োজন অনুসারে সুপাবেস (Supabase) এর সাথে সম্পূর্ণ কম্প্যাটিবল (`supabase/schema.sql`)
+- **এসইও:** সitemap (`/sitemap.xml`), আরএসএস ফিড (`/rss.xml`), ওপেন গ্রাফ মেটাডাটা

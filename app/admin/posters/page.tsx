@@ -99,6 +99,7 @@ export default function AdminPostersPage() {
 
       posterToSave = {
         id: `poster-${Date.now()}`,
+        type: 'poster',
         slug: slugCandidate || `poster-${Date.now()}`,
         title: title.trim() || titleBn.trim(),
         title_bn: titleBn.trim() || undefined,
@@ -106,6 +107,7 @@ export default function AdminPostersPage() {
         image_url: imageUrl,
         high_res_url: highResUrl || imageUrl,
         dimensions,
+        status: 'published',
         published_at: new Date().toISOString(),
         is_sample: false,
       };

@@ -111,6 +111,8 @@ function SearchComponent() {
         return `/posters/${item.slug}`;
       case 'book':
         return `/books/${item.slug}`;
+      default:
+        return '/';
     }
   };
 

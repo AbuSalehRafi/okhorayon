@@ -1,59 +1,51 @@
-export type ContentStatus = 'draft' | 'published';
+export type ContentType = 'poem' | 'article' | 'research' | 'poster' | 'book';
+export type ContentStatus = 'draft' | 'published' | 'ongoing';
 
-export interface Poem {
+export interface BaseItem {
   id: string;
+  type?: ContentType;
   slug: string;
   title: string;
   title_bn?: string;
-  content: string; // Stanza & line-break preserved
+  description?: string;
+  description_bn?: string;
+  excerpt?: string;
+  excerpt_bn?: string;
+  abstract?: string;
+  abstract_bn?: string;
+  form?: string;
+  content?: string;
   content_bn?: string;
-  published_at: string;
-  status: ContentStatus;
-  is_sample: boolean;
-  notes?: string;
-  tags?: string[];
-}
-
-export interface Article {
-  id: string;
-  slug: string;
-  title: string;
-  title_bn?: string;
-  excerpt: string;
-  content: string; // Markdown
-  reading_time_min: number;
-  tags: string[];
-  status: ContentStatus;
-  published_at: string;
-  is_sample: boolean;
-}
-
-export interface ResearchPaper {
-  id: string;
-  slug: string;
-  title: string;
-  title_bn?: string;
-  abstract: string;
-  keywords: string[];
-  content?: string; // Notes / Markdown content
-  status: 'ongoing' | 'published';
   pdf_url?: string;
+  cover_image_url?: string;
   published_at: string;
-  is_sample: boolean;
+  status?: ContentStatus;
+  is_featured?: boolean;
+  is_sample?: boolean;
+  tags?: string[];
+  reading_time_min?: number;
 }
 
-export interface Poster {
-  id: string;
-  slug: string;
-  title: string;
-  title_bn?: string;
-  description: string;
+export interface Poem extends BaseItem {
+  type?: 'poem';
+  notes?: string;
+}
+
+export interface Article extends BaseItem {
+  type?: 'article';
+}
+
+export interface ResearchPaper extends BaseItem {
+  type?: 'research';
+  abstract?: string;
+  keywords?: string[];
+}
+
+export interface Poster extends BaseItem {
+  type?: 'poster';
   image_url: string;
   high_res_url?: string;
   dimensions?: string;
-  published_at: string;
-  is_sample: boolean;
-  status?: ContentStatus;
 }
 
 export interface BookChapter {
@@ -62,22 +54,14 @@ export interface BookChapter {
   chapter_number: number;
   slug: string;
   title: string;
-  content: string; // Markdown
+  content: string;
   reading_time_min: number;
   created_at: string;
 }
 
-export interface Book {
-  id: string;
-  slug: string;
-  title: string;
-  title_bn?: string;
+export interface Book extends BaseItem {
+  type?: 'book';
   subtitle?: string;
-  description: string;
-  cover_image_url: string;
-  status: ContentStatus;
-  published_at: string;
-  is_sample: boolean;
   chapters?: BookChapter[];
 }
 
@@ -99,12 +83,7 @@ export interface SiteProfile {
   bio: string;
 }
 
-export type ContentItemUnion =
-  | ({ type: 'poem' } & Poem)
-  | ({ type: 'article' } & Article)
-  | ({ type: 'research' } & ResearchPaper)
-  | ({ type: 'poster' } & Poster)
-  | ({ type: 'book' } & Book);
+export type ContentItemUnion = Poem | Article | ResearchPaper | Poster | Book;
 
 export interface ContinueReadingState {
   bookSlug: string;
