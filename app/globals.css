@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Noto+Sans+Bengali:wght@400;500;600&family=Noto+Serif+Bengali:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-merriweather: 'Merriweather', Georgia, serif;
+  --font-inter: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-noto-serif-bengali: 'Noto Serif Bengali', serif;
+  --font-noto-sans-bengali: 'Noto Sans Bengali', sans-serif;
+
+  /* Paper Light Mode Defaults */
+  --bg-primary: #faf8f5;
+  --bg-surface: #f4efe6;
+  --bg-card: #f8f5ee;
+  --border-color: #eae2d2;
+  --text-primary: #191c21;
+  --text-secondary: #5a5043;
+  --text-muted: #8c8273;
+  --accent: #b5873a;
+  --accent-muted: rgba(181, 135, 58, 0.12);
+}
+
+.dark {
+  /* Deep Ink-Blue Dark Mode */
+  --bg-primary: #080c14;
+  --bg-surface: #0d1522;
+  --bg-card: #121c2e;
+  --border-color: #1d2a40;
+  --text-primary: #ecf1f8;
+  --text-secondary: #9db1cc;
+  --text-muted: #62758f;
+  --accent: #cda24e;
+  --accent-muted: rgba(205, 162, 78, 0.15);
+}
+
+/* Sepia Mode (Reader Specific) */
+.sepia {
+  --bg-primary: #fbf5e8;
+  --bg-surface: #f3ebd8;
+  --bg-card: #f8f1df;
+  --border-color: #e5dac1;
+  --text-primary: #382c1a;
+  --text-secondary: #65543d;
+  --text-muted: #968369;
+  --accent: #9d6f21;
+  --accent-muted: rgba(157, 111, 33, 0.15);
+}
+
+/* Subtle Paper Texture & Constellation Overlays */
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-inter);
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  background-image: radial-gradient(rgba(181, 135, 58, 0.04) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.dark body, body.dark {
+  background-image: radial-gradient(rgba(205, 162, 78, 0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Reading Prose Container */
+.prose-reading {
+  font-family: var(--font-merriweather);
+  font-size: 1.125rem; /* 18px */
+  line-height: 1.75;
+  max-width: 68ch; /* 65 to 75 characters optimal measure */
+  color: var(--text-primary);
+}
+
+.prose-reading p {
+  margin-bottom: 1.5rem;
+}
+
+.prose-reading h1, .prose-reading h2, .prose-reading h3, .prose-reading h4 {
+  font-family: var(--font-inter);
+  color: var(--text-primary);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  margin-top: 2.25rem;
+  margin-bottom: 1rem;
+}
+
+.prose-reading blockquote {
+  border-left: 2px solid var(--accent);
+  padding-left: 1.25rem;
+  font-style: italic;
+  color: var(--text-secondary);
+  margin: 1.75rem 0;
+}
+
+/* Stanza Preservation for Poetry */
+.poem-stanza {
+  font-family: var(--font-merriweather);
+  white-space: pre-wrap;
+  line-height: 1.9;
+  font-size: 1.125rem;
+}
+
+/* Smooth Focus Indicators for Keyboard Accessibility */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Quiet Interstitial Quote Divider */
+.quote-flourish {
+  display: inline-block;
+  width: 28px;
+  height: 1px;
+  background-color: var(--accent);
+  opacity: 0.6;
+}
