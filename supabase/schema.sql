@@ -1,10 +1,31 @@
 -- =========================================================================
--- RAFI'S WRITER WEBSITE - SUPABASE DATABASE SCHEMA
+-- OKHORAYON WRITER WEBSITE - SUPABASE DATABASE SCHEMA
 -- Run this in the Supabase SQL Editor (Dashboard -> SQL Editor -> New Query)
 -- =========================================================================
 
 -- Enable UUID extension
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
+-- 0. UNIFIED SITE STORE TABLE (Stores full synced dynamic content & automatically seeds)
+CREATE TABLE IF NOT EXISTS public.site_store (
+    id TEXT PRIMARY KEY,
+    data JSONB NOT NULL DEFAULT '{}'::jsonb,
+    updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- Allow public read and write access to site_store for the writer site
+ALTER TABLE public.site_store ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Public read site_store" ON public.site_store FOR SELECT USING (true);
+CREATE POLICY "Public write site_store" ON public.site_store FOR INSERT WITH CHECK (true);
+CREATE POLICY "Public update site_store" ON public.site_store FOR UPDATE USING (true);
+
+-- Storage bucket for uploads (PDFs, Images, Posters, Books)
+INSERT INTO storage.buckets (id, name, public) 
+VALUES ('uploads', 'uploads', true) 
+ON CONFLICT (id) DO NOTHING;
+
+CREATE POLICY "Public access to uploads bucket" ON storage.objects 
+FOR ALL USING (bucket_id = 'uploads') WITH CHECK (bucket_id = 'uploads');
 
 -- 1. PROFILES TABLE (Rafi's Bio and Philosophy)
 CREATE TABLE IF NOT EXISTS public.profiles (

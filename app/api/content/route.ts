@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { revalidatePath } from 'next/cache';
-import { getContentData, saveContentData } from '@/lib/firebase/db';
+import { getContentData, saveContentData } from '@/lib/cloud-db';
 
 export async function GET() {
   const data = await getContentData();

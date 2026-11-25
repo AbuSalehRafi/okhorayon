@@ -1,4 +1,4 @@
-import { getContentData } from '@/lib/firebase/db';
+import { getContentData } from '@/lib/cloud-db';
 import {
   sampleProfile,
   sampleQuotes,

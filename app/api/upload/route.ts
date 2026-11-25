@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import fs from 'fs/promises';
 import path from 'path';
-import { uploadFileToCloud } from '@/lib/firebase/db';
+import { uploadFileToCloud } from '@/lib/cloud-db';
 
 export async function POST(req: NextRequest) {
   try {
