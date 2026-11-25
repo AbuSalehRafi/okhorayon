@@ -1,26 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { revalidatePath } from 'next/cache';
-import fs from 'fs/promises';
-import path from 'path';
-
-const DATA_FILE = path.join(process.cwd(), 'data', 'content.json');
-
-async function readData() {
-  try {
-    const raw = await fs.readFile(DATA_FILE, 'utf-8');
-    return JSON.parse(raw);
-  } catch (err) {
-    console.error('Error reading data file:', err);
-    return null;
-  }
-}
-
-async function writeData(data: any) {
-  await fs.writeFile(DATA_FILE, JSON.stringify(data, null, 2), 'utf-8');
-}
+import { getContentData, saveContentData } from '@/lib/firebase/db';
 
 export async function GET() {
-  const data = await readData();
+  const data = await getContentData();
   return NextResponse.json(data || {});
 }
 
@@ -29,9 +12,9 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const { action, payload } = body;
 
-    const data = await readData();
+    const data = await getContentData();
     if (!data) {
-      return NextResponse.json({ error: 'Failed to read data file' }, { status: 500 });
+      return NextResponse.json({ error: 'Failed to read data' }, { status: 500 });
     }
 
     switch (action) {
@@ -193,7 +176,7 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ error: 'Unknown action' }, { status: 400 });
     }
 
-    await writeData(data);
+    await saveContentData(data);
     try {
       revalidatePath('/', 'layout');
     } catch (e) {

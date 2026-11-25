@@ -1,5 +1,4 @@
-import fs from 'fs';
-import path from 'path';
+import { getContentData } from '@/lib/firebase/db';
 import {
   sampleProfile,
   sampleQuotes,
@@ -22,118 +21,95 @@ import {
   SiteProfile,
 } from '@/lib/types';
 
-const DATA_FILE = path.join(process.cwd(), 'data', 'content.json');
-
-function getStoredData(): any {
-  try {
-    if (fs.existsSync(DATA_FILE)) {
-      const raw = fs.readFileSync(DATA_FILE, 'utf-8');
-      return JSON.parse(raw);
-    }
-  } catch (err) {
-    console.error('Failed reading data/content.json, using fallback:', err);
-  }
-  return {
-    profile: sampleProfile,
-    quotes: sampleQuotes,
-    poems: samplePoems,
-    articles: sampleArticles,
-    research: sampleResearch,
-    posters: samplePosters,
-    books: sampleBooks,
-    featured: sampleFeaturedItem,
-  };
-}
-
 // 1. PROFILE
 export async function getProfile(): Promise<SiteProfile> {
-  const data = getStoredData();
+  const data = await getContentData();
   return data.profile || sampleProfile;
 }
 
 // 2. QUOTES
 export async function getQuotes(): Promise<InterstitialQuote[]> {
-  const data = getStoredData();
+  const data = await getContentData();
   const quotes: InterstitialQuote[] = data.quotes || sampleQuotes;
   return quotes.filter((q) => q.is_active);
 }
 
 // 3. POEMS
 export async function getPoems(): Promise<Poem[]> {
-  const data = getStoredData();
+  const data = await getContentData();
   return (data.poems || samplePoems).filter((p: Poem) => p.status === 'published');
 }
 
 export async function getAllPoemsAdmin(): Promise<Poem[]> {
-  const data = getStoredData();
+  const data = await getContentData();
   return data.poems || samplePoems;
 }
 
 export async function getPoemBySlug(slug: string): Promise<Poem | null> {
-  const data = getStoredData();
+  const data = await getContentData();
   const poem = (data.poems || samplePoems).find((p: Poem) => p.slug === slug);
   return poem || null;
 }
 
 // 4. ARTICLES
 export async function getArticles(): Promise<Article[]> {
-  const data = getStoredData();
+  const data = await getContentData();
   return (data.articles || sampleArticles).filter((a: Article) => a.status === 'published');
 }
 
 export async function getAllArticlesAdmin(): Promise<Article[]> {
-  const data = getStoredData();
+  const data = await getContentData();
   return data.articles || sampleArticles;
 }
 
 export async function getArticleBySlug(slug: string): Promise<Article | null> {
-  const data = getStoredData();
+  const data = await getContentData();
   const article = (data.articles || sampleArticles).find((a: Article) => a.slug === slug);
   return article || null;
 }
 
 // 5. RESEARCH
 export async function getResearch(): Promise<ResearchPaper[]> {
-  const data = getStoredData();
+  const data = await getContentData();
   return data.research || sampleResearch;
 }
 
 export async function getResearchBySlug(slug: string): Promise<ResearchPaper | null> {
-  const data = getStoredData();
+  const data = await getContentData();
   const paper = (data.research || sampleResearch).find((r: ResearchPaper) => r.slug === slug);
   return paper || null;
 }
 
 // 6. POSTERS
 export async function getPosters(): Promise<Poster[]> {
-  const data = getStoredData();
+  const data = await getContentData();
   return (data.posters || samplePosters).filter((p: Poster) => p.status !== 'draft');
 }
 
 export async function getAllPostersAdmin(): Promise<Poster[]> {
-  const data = getStoredData();
+  const data = await getContentData();
   return data.posters || samplePosters;
 }
 
 export async function getPosterBySlug(slug: string): Promise<Poster | null> {
-  const data = getStoredData();
+  const data = await getContentData();
   const poster = (data.posters || samplePosters).find((p: Poster) => p.slug === slug);
   return poster || null;
 }
 
 // 7. BOOKS
 export async function getBooks(): Promise<Book[]> {
-  const data = getStoredData();
+  const data = await getContentData();
   return (data.books || sampleBooks).filter((b: Book) => b.status === 'published');
 }
 
 export async function getAllBooksAdmin(): Promise<Book[]> {
-  const data = getStoredData();
+  const data = await getContentData();
   return data.books || sampleBooks;
 }
 
 export async function getBookBySlug(slug: string): Promise<Book | null> {
-  const data = getStoredData();
+  const data = await getContentData();
   const book = (data.books || sampleBooks).find((b: Book) => b.slug === slug);
   return book || null;
 }
@@ -142,7 +118,7 @@ export async function getBookChapter(
   bookSlug: string,
   chapterSlug: string
 ): Promise<{ book: Book; chapter: BookChapter; prevChapter: BookChapter | null; nextChapter: BookChapter | null } | null> {
-  const data = getStoredData();
+  const data = await getContentData();
   const book = (data.books || sampleBooks).find((b: Book) => b.slug === bookSlug);
   if (!book || !book.chapters) return null;
 
@@ -158,7 +134,7 @@ export async function getBookChapter(
 
 // 8. LATEST ITEMS ACROSS ALL 5 CONTENT TYPES
 export async function getLatestFeed(limit = 6): Promise<ContentItemUnion[]> {
-  const data = getStoredData();
+  const data = await getContentData();
   const poems: Poem[] = (data.poems || samplePoems).filter((p: Poem) => p.status === 'published');
   const articles: Article[] = (data.articles || sampleArticles).filter((a: Article) => a.status === 'published');
   const research: ResearchPaper[] = data.research || sampleResearch;
@@ -180,7 +156,7 @@ export async function getLatestFeed(limit = 6): Promise<ContentItemUnion[]> {
 
 // 9. SUMMARY COUNTS & TOP 3 FOR HOMEPAGE
 export async function getDashboardSummaries() {
-  const data = getStoredData();
+  const data = await getContentData();
   const poems = (data.poems || samplePoems).filter((p: Poem) => p.status === 'published');
   const articles = (data.articles || sampleArticles).filter((a: Article) => a.status === 'published');
   const research = data.research || sampleResearch;
@@ -213,6 +189,6 @@ export async function getDashboardSummaries() {
 
 // 10. FEATURED ITEM
 export async function getFeaturedItem() {
-  const data = getStoredData();
+  const data = await getContentData();
   return data.featured || sampleFeaturedItem;
 }
