@@ -2,14 +2,14 @@ import { initializeApp, getApps, getApp, FirebaseApp } from 'firebase/app';
 import { getFirestore, Firestore } from 'firebase/firestore';
 import { getStorage, FirebaseStorage } from 'firebase/storage';
 
-const firebaseConfig = {
+const getFirebaseConfig = () => ({
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
   authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
   projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
   storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
-};
+});
 
 export const isFirebaseConfigured = (): boolean => {
   return !!(
@@ -18,18 +18,39 @@ export const isFirebaseConfigured = (): boolean => {
   );
 };
 
-let app: FirebaseApp | null = null;
-let db: Firestore | null = null;
-let storage: FirebaseStorage | null = null;
-
-if (isFirebaseConfigured()) {
+export function getFirebaseApp(): FirebaseApp | null {
+  if (!isFirebaseConfigured()) return null;
   try {
-    app = getApps().length > 0 ? getApp() : initializeApp(firebaseConfig);
-    db = getFirestore(app);
-    storage = getStorage(app);
+    return getApps().length > 0 ? getApp() : initializeApp(getFirebaseConfig());
   } catch (err) {
-    console.warn('Firebase initialization warning:', err);
+    console.warn('Firebase initializeApp warning:', err);
+    return null;
   }
 }
 
-export { app, db, storage };
+export function getFirebaseDb(): Firestore | null {
+  const app = getFirebaseApp();
+  if (!app) return null;
+  try {
+    return getFirestore(app);
+  } catch (err) {
+    console.warn('getFirestore warning:', err);
+    return null;
+  }
+}
+
+export function getFirebaseStorage(): FirebaseStorage | null {
+  const app = getFirebaseApp();
+  if (!app) return null;
+  try {
+    return getStorage(app);
+  } catch (err) {
+    console.warn('getStorage warning:', err);
+    return null;
+  }
+}
+
+export const app = getFirebaseApp();
+export const db = getFirebaseDb();
+export const storage = getFirebaseStorage();
+

@@ -1,5 +1,5 @@
+import { getFirebaseDb, getFirebaseStorage, isFirebaseConfigured } from './firebase/config';
 import { getSupabaseClient, isSupabaseConfigured } from './supabase/client';
-import { db, storage, isFirebaseConfigured } from './firebase/config';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import fs from 'fs';
@@ -39,7 +39,29 @@ export function getLocalFallbackData(): any {
 }
 
 export async function getContentData(): Promise<any> {
-  // 1. Try Supabase first (Recommended 100% Free Database)
+  // 1. Try Firebase Firestore first (User's connected database)
+  if (isFirebaseConfigured()) {
+    const db = getFirebaseDb();
+    if (db) {
+      try {
+        const docRef = doc(db, 'site_content', 'main_data');
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+          return docSnap.data();
+        } else {
+          console.log('Seeding initial website content to Firebase Firestore...');
+          const initialData = getLocalFallbackData();
+          await setDoc(docRef, initialData);
+          return initialData;
+        }
+      } catch (err) {
+        console.warn('Firebase read error, checking other sources:', err);
+      }
+    }
+  }
+
+  // 2. Try Supabase (if configured)
   if (isSupabaseConfigured()) {
     const supabase = getSupabaseClient();
     if (supabase) {
@@ -54,33 +76,14 @@ export async function getContentData(): Promise<any> {
           return data.data;
         }
 
-        // Auto-seed initial content to Supabase if empty
         if (!error) {
           const initialData = getLocalFallbackData();
           await supabase.from('site_store').upsert({ id: 'content', data: initialData });
           return initialData;
         }
       } catch (err) {
-        console.warn('Supabase read error, checking fallbacks:', err);
+        console.warn('Supabase read error:', err);
       }
-    }
-  }
-
-  // 2. Try Firebase (Secondary Cloud Option)
-  if (isFirebaseConfigured() && db) {
-    try {
-      const docRef = doc(db, 'site_content', 'main_data');
-      const docSnap = await getDoc(docRef);
-
-      if (docSnap.exists()) {
-        return docSnap.data();
-      } else {
-        const initialData = getLocalFallbackData();
-        await setDoc(docRef, initialData);
-        return initialData;
-      }
-    } catch (err) {
-      console.warn('Firebase read error, using local fallback:', err);
     }
   }
 
@@ -91,7 +94,21 @@ export async function getContentData(): Promise<any> {
 export async function saveContentData(data: any): Promise<boolean> {
   let saved = false;
 
-  // 1. Save to Supabase (if configured)
+  // 1. Save to Firebase Firestore (User's connected database)
+  if (isFirebaseConfigured()) {
+    const db = getFirebaseDb();
+    if (db) {
+      try {
+        const docRef = doc(db, 'site_content', 'main_data');
+        await setDoc(docRef, data);
+        saved = true;
+      } catch (err) {
+        console.error('Error saving to Firebase Firestore:', err);
+      }
+    }
+  }
+
+  // 2. Save to Supabase (if configured)
   if (isSupabaseConfigured()) {
     const supabase = getSupabaseClient();
     if (supabase) {
@@ -108,18 +125,7 @@ export async function saveContentData(data: any): Promise<boolean> {
     }
   }
 
-  // 2. Save to Firebase (if configured)
-  if (isFirebaseConfigured() && db) {
-    try {
-      const docRef = doc(db, 'site_content', 'main_data');
-      await setDoc(docRef, data);
-      saved = true;
-    } catch (err) {
-      console.error('Error saving to Firebase:', err);
-    }
-  }
-
-  // 3. Save locally if filesystem is writable
+  // 3. Save locally if filesystem is writable (local dev)
   try {
     if (fs.existsSync(path.dirname(DATA_FILE))) {
       fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2), 'utf-8');
@@ -138,7 +144,21 @@ export async function uploadFileToCloud(
 ): Promise<string | null> {
   const sanitized = `${Date.now()}-${fileName.replace(/[^a-zA-Z0-9.-]/g, '_')}`;
 
-  // 1. Try Supabase Storage (100% Free 1GB bucket)
+  // 1. Try Firebase Storage
+  if (isFirebaseConfigured()) {
+    const storage = getFirebaseStorage();
+    if (storage) {
+      try {
+        const storageRef = ref(storage, `uploads/${sanitized}`);
+        await uploadBytes(storageRef, buffer, { contentType });
+        return await getDownloadURL(storageRef);
+      } catch (err) {
+        console.error('Error uploading to Firebase Storage:', err);
+      }
+    }
+  }
+
+  // 2. Try Supabase Storage (if configured)
   if (isSupabaseConfigured()) {
     const supabase = getSupabaseClient();
     if (supabase) {
@@ -155,23 +175,10 @@ export async function uploadFileToCloud(
           if (data?.publicUrl) {
             return data.publicUrl;
           }
-        } else {
-          console.warn('Supabase storage upload notice:', uploadError.message);
         }
       } catch (err) {
         console.error('Error uploading to Supabase Storage:', err);
       }
-    }
-  }
-
-  // 2. Try Firebase Storage (if configured)
-  if (isFirebaseConfigured() && storage) {
-    try {
-      const storageRef = ref(storage, `uploads/${sanitized}`);
-      await uploadBytes(storageRef, buffer, { contentType });
-      return await getDownloadURL(storageRef);
-    } catch (err) {
-      console.error('Error uploading to Firebase Storage:', err);
     }
   }
 
