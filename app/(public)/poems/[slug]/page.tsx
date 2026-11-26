@@ -7,6 +7,7 @@ import { ArrowLeft, Feather } from 'lucide-react';
 import { DynamicPdfButton } from '@/components/reader/dynamic-pdf-button';
 
 export const dynamic = 'force-dynamic';
+export const dynamicParams = true;
 export const revalidate = 0;
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {

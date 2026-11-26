@@ -3,22 +3,8 @@ import { notFound } from 'next/navigation';
 import { getBookChapter, getBooks } from '@/lib/supabase/api';
 import { DistractionFreeReader } from '@/components/reader/distraction-free-reader';
 
-export async function generateStaticParams() {
-  const books = await getBooks();
-  const params: { slug: string; chapter: string }[] = [];
-
-  for (const book of books) {
-    if (book.chapters) {
-      for (const chap of book.chapters) {
-        params.push({ slug: book.slug, chapter: chap.slug });
-      }
-    }
-  }
-
-  return params;
-}
-
 export const dynamic = 'force-dynamic';
+export const dynamicParams = true;
 export const revalidate = 0;
 
 export async function generateMetadata({
