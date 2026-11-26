@@ -2,6 +2,9 @@ import { NextRequest, NextResponse } from 'next/server';
 import { revalidatePath } from 'next/cache';
 import { getContentData, saveContentData } from '@/lib/cloud-db';
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export async function GET() {
   const data = await getContentData();
   return NextResponse.json(data || {});
@@ -107,30 +110,35 @@ export async function POST(req: NextRequest) {
       // GRANULAR COMPATIBILITY ACTIONS
       case 'save_poem': {
         const poem = payload;
+        if (!data.poems) data.poems = [];
         const index = data.poems.findIndex((p: any) => p.id === poem.id);
         if (index >= 0) data.poems[index] = poem;
         else data.poems.unshift(poem);
         break;
       }
       case 'delete_poem': {
+        if (!data.poems) data.poems = [];
         data.poems = data.poems.filter((p: any) => p.id !== payload.id);
         break;
       }
 
       case 'save_article': {
         const article = payload;
+        if (!data.articles) data.articles = [];
         const index = data.articles.findIndex((a: any) => a.id === article.id);
         if (index >= 0) data.articles[index] = article;
         else data.articles.unshift(article);
         break;
       }
       case 'delete_article': {
+        if (!data.articles) data.articles = [];
         data.articles = data.articles.filter((a: any) => a.id !== payload.id);
         break;
       }
 
       case 'save_research': {
         const research = payload;
+        if (!data.research) data.research = [];
         const index = data.research.findIndex((r: any) => r.id === research.id);
         if (index >= 0) data.research[index] = research;
         else data.research.unshift(research);
@@ -179,6 +187,12 @@ export async function POST(req: NextRequest) {
     await saveContentData(data);
     try {
       revalidatePath('/', 'layout');
+      revalidatePath('/');
+      revalidatePath('/poems');
+      revalidatePath('/articles');
+      revalidatePath('/research');
+      revalidatePath('/books');
+      revalidatePath('/admin');
     } catch (e) {
       // safe fallback
     }

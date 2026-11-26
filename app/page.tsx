@@ -16,6 +16,7 @@ import { InterstitialQuoteCard } from '@/components/quotes/interstitial-quote';
 import { formatDate } from '@/lib/utils';
 import { ArrowRight, BookOpen, Clock, Download, Feather, FileCheck, FileText, Image as ImageIcon, Sparkles } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
 export const revalidate = 0; // Dynamic, updates immediately on file/admin edits
 
 export default async function HomePage() {

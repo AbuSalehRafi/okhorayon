@@ -5,6 +5,7 @@ import { getBooks } from '@/lib/supabase/api';
 import { BookOpen } from 'lucide-react';
 import { siteConfig } from '@/lib/site-config';
 
+export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 export const metadata = {
