@@ -10,7 +10,8 @@ export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const poem = await getPoemBySlug(params.slug);
+  const slug = decodeURIComponent(params.slug);
+  const poem = await getPoemBySlug(slug);
   if (!poem) return { title: 'Poem Not Found' };
   const description = (poem.content_bn || poem.content || '').slice(0, 150);
   return {
@@ -20,7 +21,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 }
 
 export default async function SinglePoemPage({ params }: { params: { slug: string } }) {
-  const poem = await getPoemBySlug(params.slug);
+  const slug = decodeURIComponent(params.slug);
+  const poem = await getPoemBySlug(slug);
   if (!poem) notFound();
 
   const mainTitle = poem.title_bn || poem.title || 'Untitled Poem';

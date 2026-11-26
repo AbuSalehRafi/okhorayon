@@ -12,7 +12,8 @@ export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const article = await getArticleBySlug(params.slug);
+  const slug = decodeURIComponent(params.slug);
+  const article = await getArticleBySlug(slug);
   if (!article) return { title: 'Article Not Found' };
   return {
     title: `${article.title || article.title_bn} — অক্ষরায়ণ`,
@@ -21,7 +22,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 }
 
 export default async function SingleArticlePage({ params }: { params: { slug: string } }) {
-  const article = await getArticleBySlug(params.slug);
+  const slug = decodeURIComponent(params.slug);
+  const article = await getArticleBySlug(slug);
   if (!article) notFound();
 
   const mainTitle = article.title_bn || article.title || 'Untitled Essay';

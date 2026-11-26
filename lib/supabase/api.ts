@@ -21,6 +21,28 @@ import {
   SiteProfile,
 } from '@/lib/types';
 
+// Robust helper to match slugs across raw, decoded, and Bengali characters
+function matchesSlug(item: any, rawSlug: string): boolean {
+  if (!item || !rawSlug) return false;
+  try {
+    const decodedQuery = decodeURIComponent(rawSlug).trim().toLowerCase();
+    const itemSlug = decodeURIComponent(item.slug || '').trim().toLowerCase();
+    const itemId = String(item.id || '').trim().toLowerCase();
+    const itemTitle = decodeURIComponent(item.title || '').trim().toLowerCase();
+    const itemTitleBn = decodeURIComponent(item.title_bn || '').trim().toLowerCase();
+
+    return (
+      itemSlug === decodedQuery ||
+      item.slug === rawSlug ||
+      itemId === decodedQuery ||
+      itemTitle === decodedQuery ||
+      itemTitleBn === decodedQuery
+    );
+  } catch {
+    return item.slug === rawSlug || item.id === rawSlug;
+  }
+}
+
 // 1. PROFILE
 export async function getProfile(): Promise<SiteProfile> {
   const data = await getContentData();
@@ -47,7 +69,7 @@ export async function getAllPoemsAdmin(): Promise<Poem[]> {
 
 export async function getPoemBySlug(slug: string): Promise<Poem | null> {
   const data = await getContentData();
-  const poem = (data.poems || samplePoems).find((p: Poem) => p.slug === slug);
+  const poem = (data.poems || samplePoems).find((p: Poem) => matchesSlug(p, slug));
   return poem || null;
 }
 
@@ -64,7 +86,7 @@ export async function getAllArticlesAdmin(): Promise<Article[]> {
 
 export async function getArticleBySlug(slug: string): Promise<Article | null> {
   const data = await getContentData();
-  const article = (data.articles || sampleArticles).find((a: Article) => a.slug === slug);
+  const article = (data.articles || sampleArticles).find((a: Article) => matchesSlug(a, slug));
   return article || null;
 }
 
@@ -76,7 +98,7 @@ export async function getResearch(): Promise<ResearchPaper[]> {
 
 export async function getResearchBySlug(slug: string): Promise<ResearchPaper | null> {
   const data = await getContentData();
-  const paper = (data.research || sampleResearch).find((r: ResearchPaper) => r.slug === slug);
+  const paper = (data.research || sampleResearch).find((r: ResearchPaper) => matchesSlug(r, slug));
   return paper || null;
 }
 
@@ -93,7 +115,7 @@ export async function getAllPostersAdmin(): Promise<Poster[]> {
 
 export async function getPosterBySlug(slug: string): Promise<Poster | null> {
   const data = await getContentData();
-  const poster = (data.posters || samplePosters).find((p: Poster) => p.slug === slug);
+  const poster = (data.posters || samplePosters).find((p: Poster) => matchesSlug(p, slug));
   return poster || null;
 }
 
@@ -110,7 +132,7 @@ export async function getAllBooksAdmin(): Promise<Book[]> {
 
 export async function getBookBySlug(slug: string): Promise<Book | null> {
   const data = await getContentData();
-  const book = (data.books || sampleBooks).find((b: Book) => b.slug === slug);
+  const book = (data.books || sampleBooks).find((b: Book) => matchesSlug(b, slug));
   return book || null;
 }
 
@@ -119,10 +141,14 @@ export async function getBookChapter(
   chapterSlug: string
 ): Promise<{ book: Book; chapter: BookChapter; prevChapter: BookChapter | null; nextChapter: BookChapter | null } | null> {
   const data = await getContentData();
-  const book = (data.books || sampleBooks).find((b: Book) => b.slug === bookSlug);
+  const book = (data.books || sampleBooks).find((b: Book) => matchesSlug(b, bookSlug));
   if (!book || !book.chapters) return null;
 
-  const currentIndex = book.chapters.findIndex((c: BookChapter) => c.slug === chapterSlug);
+  const decodedChapSlug = decodeURIComponent(chapterSlug).trim().toLowerCase();
+  const currentIndex = book.chapters.findIndex((c: BookChapter) => {
+    const cSlug = decodeURIComponent(c.slug || '').trim().toLowerCase();
+    return cSlug === decodedChapSlug || c.slug === chapterSlug || c.id === chapterSlug;
+  });
   if (currentIndex === -1) return null;
 
   const chapter = book.chapters[currentIndex];

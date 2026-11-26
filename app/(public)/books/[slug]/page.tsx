@@ -10,7 +10,8 @@ export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const book = await getBookBySlug(params.slug);
+  const slug = decodeURIComponent(params.slug);
+  const book = await getBookBySlug(slug);
   if (!book) return { title: 'Book Not Found' };
   return {
     title: `${book.title || book.title_bn} — অক্ষরায়ণ`,
@@ -19,7 +20,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 }
 
 export default async function SingleBookPage({ params }: { params: { slug: string } }) {
-  const book = await getBookBySlug(params.slug);
+  const slug = decodeURIComponent(params.slug);
+  const book = await getBookBySlug(slug);
   if (!book) notFound();
 
   const mainTitle = book.title_bn || book.title || 'Untitled Book';

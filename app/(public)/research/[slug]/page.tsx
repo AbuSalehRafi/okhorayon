@@ -11,7 +11,8 @@ export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const paper = await getResearchBySlug(params.slug);
+  const slug = decodeURIComponent(params.slug);
+  const paper = await getResearchBySlug(slug);
   if (!paper) return { title: 'Research Not Found' };
   return {
     title: `${paper.title || paper.title_bn} — গবেষণা ও মনোগ্রাফ`,
@@ -20,7 +21,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 }
 
 export default async function SingleResearchPage({ params }: { params: { slug: string } }) {
-  const paper = await getResearchBySlug(params.slug);
+  const slug = decodeURIComponent(params.slug);
+  const paper = await getResearchBySlug(slug);
   if (!paper) notFound();
 
   const mainTitle = paper.title_bn || paper.title || 'Untitled Monograph';

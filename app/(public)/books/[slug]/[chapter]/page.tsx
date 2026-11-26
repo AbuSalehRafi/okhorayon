@@ -18,12 +18,17 @@ export async function generateStaticParams() {
   return params;
 }
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export async function generateMetadata({
   params,
 }: {
   params: { slug: string; chapter: string };
 }) {
-  const result = await getBookChapter(params.slug, params.chapter);
+  const bookSlug = decodeURIComponent(params.slug);
+  const chapterSlug = decodeURIComponent(params.chapter);
+  const result = await getBookChapter(bookSlug, chapterSlug);
   if (!result) return { title: 'Chapter Not Found' };
   return {
     title: `${result.chapter.title} — ${result.book.title}`,
@@ -36,7 +41,9 @@ export default async function ChapterReaderPage({
 }: {
   params: { slug: string; chapter: string };
 }) {
-  const result = await getBookChapter(params.slug, params.chapter);
+  const bookSlug = decodeURIComponent(params.slug);
+  const chapterSlug = decodeURIComponent(params.chapter);
+  const result = await getBookChapter(bookSlug, chapterSlug);
   if (!result) notFound();
 
   return (
