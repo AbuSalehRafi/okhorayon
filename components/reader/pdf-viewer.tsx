@@ -12,6 +12,17 @@ interface PdfViewerProps {
 export function PdfViewer({ url, title, className = '' }: PdfViewerProps) {
   const [isFullscreen, setIsFullscreen] = useState(false);
 
+  // Auto-format Google Drive and standard PDF URLs for seamless embedding
+  const getEmbedUrl = (rawUrl: string) => {
+    if (!rawUrl) return '';
+    if (rawUrl.includes('drive.google.com')) {
+      return rawUrl.replace(/\/view(\?.*)?$/, '/preview');
+    }
+    return `${rawUrl}#toolbar=1&navpanes=0&scrollbar=1`;
+  };
+
+  const embedSrc = getEmbedUrl(url);
+
   return (
     <div
       className={`border border-paper-300 dark:border-ink-800 rounded-xl overflow-hidden bg-paper-100/50 dark:bg-ink-900/60 transition-all ${
@@ -47,6 +58,8 @@ export function PdfViewer({ url, title, className = '' }: PdfViewerProps) {
 
           <a
             href={url}
+            target="_blank"
+            rel="noopener noreferrer"
             download
             className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-accent text-white dark:text-ink-950 text-xs font-medium hover:bg-accent-hover transition-colors shadow-sm"
           >
@@ -59,8 +72,9 @@ export function PdfViewer({ url, title, className = '' }: PdfViewerProps) {
       {/* Embedded PDF iframe */}
       <div className={`w-full ${isFullscreen ? 'flex-1' : 'h-[650px] md:h-[800px]'}`}>
         <iframe
-          src={`${url}#toolbar=1&navpanes=0&scrollbar=1`}
+          src={embedSrc}
           title={title}
+          allow="autoplay"
           className="w-full h-full border-0 bg-paper-50 dark:bg-ink-950"
         />
       </div>

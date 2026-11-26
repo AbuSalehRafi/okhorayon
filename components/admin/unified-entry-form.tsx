@@ -388,6 +388,26 @@ export function UnifiedEntryForm({ initialItem, onSuccess, onCancel }: UnifiedEn
           </div>
         </div>
 
+        {/* Direct Link Alternative */}
+        <div className="mt-3">
+          <label className="block text-[11px] font-mono text-paper-700 dark:text-ink-400 mb-1">
+            অথবা সরাসরি PDF / Google Drive লিংক পেস্ট করুন (Or paste a PDF / Google Drive URL):
+          </label>
+          <input
+            type="url"
+            value={existingPdfUrl}
+            onChange={(e) => {
+              setExistingPdfUrl(e.target.value);
+              if (e.target.value) setFile(null);
+            }}
+            placeholder="https://drive.google.com/file/d/.../view অথবা https://.../document.pdf"
+            className="w-full px-3.5 py-2 rounded-lg border border-paper-300 dark:border-ink-800 bg-paper-50 dark:bg-ink-950 text-xs font-mono focus:outline-none focus:border-accent text-paper-900 dark:text-ink-100"
+          />
+          <p className="text-[11px] text-paper-600 dark:text-ink-500 font-sans mt-1">
+            💡 গুগল ড্রাইভে PDF আপলোড করে &ldquo;Anyone with the link&rdquo; দিয়ে লিংকটি এখানে পেস্ট করলেই সাইটে সরাসরি পড়া যাবে!
+          </p>
+        </div>
+
         {/* Progress bar during upload */}
         {isUploading && (
           <div className="mt-3">
