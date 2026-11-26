@@ -107,21 +107,12 @@ export default async function ResearchPage() {
                 </div>
 
                 <div className="flex items-center gap-3">
-                  {paper.pdf_url && (
-                    <a
-                      href={paper.pdf_url}
-                      download
-                      className="inline-flex items-center gap-1.5 text-xs text-accent font-medium hover:underline"
-                    >
-                      <Download className="w-3.5 h-3.5" />
-                      <span>PDF ডাউনলোড</span>
-                    </a>
-                  )}
                   <Link
                     href={`/research/${paper.slug}`}
-                    className="text-xs font-medium text-paper-900 dark:text-ink-100 hover:text-accent underline transition-colors"
+                    className="text-xs font-medium text-accent hover:underline flex items-center gap-1 transition-colors"
                   >
-                    বিস্তারিত &rarr;
+                    <span>গবেষণা পাঠ করুন</span>
+                    <span>&rarr;</span>
                   </Link>
                 </div>
               </div>

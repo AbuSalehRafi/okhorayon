@@ -3,8 +3,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { getBookBySlug, getBooks } from '@/lib/supabase/api';
-import { ArrowLeft, BookOpen, Clock, Download, FileText } from 'lucide-react';
-import { PdfViewer } from '@/components/reader/pdf-viewer';
+import { ArrowLeft, BookOpen, Clock } from 'lucide-react';
+import { DynamicPdfButton } from '@/components/reader/dynamic-pdf-button';
 
 export const revalidate = 0;
 
@@ -92,32 +92,26 @@ export default async function SingleBookPage({ params }: { params: { slug: strin
               </Link>
             )}
 
-            {book.pdf_url && (
-              <a
-                href={book.pdf_url}
-                download
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-accent text-accent hover:bg-accent/10 font-medium text-xs transition-colors"
-              >
-                <Download className="w-3.5 h-3.5" />
-                <span>সম্পূর্ণ বই ডাউনলোড (PDF)</span>
-              </a>
+            {book.chapters && book.chapters.length > 0 && (
+              <DynamicPdfButton
+                title={mainTitle}
+                author={book.author || 'রাফি'}
+                category="পুস্তক প্রকাশনা"
+                publishedAt={book.published_at}
+                excerpt={book.description_bn || book.description}
+                content={(book.chapters || [])
+                  .map(
+                    (ch: any) =>
+                      `### অধ্যায় ${ch.chapter_number}: ${ch.title}\n\n${ch.content || ''}`
+                  )
+                  .join('\n\n---\n\n')}
+                buttonLabel="সম্পূর্ণ বই ডাউনলোড (PDF)"
+                className="px-4 py-2.5"
+              />
             )}
           </div>
         </div>
       </div>
-
-      {/* Embedded PDF Viewer if provided */}
-      {book.pdf_url && (
-        <div className="my-10">
-          <div className="flex items-center justify-between mb-3">
-            <h2 className="text-sm font-sans font-medium text-paper-900 dark:text-ink-100 flex items-center gap-2">
-              <FileText className="w-4 h-4 text-accent" />
-              <span>অনলাইন বই রিডার (Digital Book Viewer)</span>
-            </h2>
-          </div>
-          <PdfViewer url={book.pdf_url} title={mainTitle} />
-        </div>
-      )}
 
       {/* Table of Contents */}
       {book.chapters && book.chapters.length > 0 && (

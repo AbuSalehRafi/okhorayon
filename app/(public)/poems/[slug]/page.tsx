@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getPoemBySlug, getPoems } from '@/lib/supabase/api';
 import { formatDate } from '@/lib/utils';
-import { ArrowLeft, Download, Feather, FileText } from 'lucide-react';
-import { PdfViewer } from '@/components/reader/pdf-viewer';
+import { ArrowLeft, Feather } from 'lucide-react';
+import { DynamicPdfButton } from '@/components/reader/dynamic-pdf-button';
 
 export const revalidate = 0;
 
@@ -67,42 +67,27 @@ export default async function SinglePoemPage({ params }: { params: { slug: strin
           </p>
         )}
 
-        <div className="flex items-center gap-3 text-xs text-paper-500 dark:text-ink-400 mt-4 font-mono">
-          <time dateTime={poem.published_at}>{formatDate(poem.published_at)}</time>
-          {poem.notes && (
-            <>
-              <span>&middot;</span>
-              <span className="italic font-sans text-paper-600 dark:text-ink-400">{poem.notes}</span>
-            </>
-          )}
-          {poem.pdf_url && (
-            <>
-              <span>&middot;</span>
-              <a
-                href={poem.pdf_url}
-                download
-                className="text-accent hover:underline inline-flex items-center gap-1"
-              >
-                <Download className="w-3 h-3" />
-                <span>PDF সংস্করণ</span>
-              </a>
-            </>
-          )}
+        <div className="flex flex-wrap items-center justify-between gap-4 text-xs text-paper-500 dark:text-ink-400 mt-4 pt-3 border-t border-paper-200 dark:border-ink-850 font-mono">
+          <div className="flex items-center gap-3">
+            <time dateTime={poem.published_at}>{formatDate(poem.published_at)}</time>
+            {poem.notes && (
+              <>
+                <span>&middot;</span>
+                <span className="italic font-sans text-paper-600 dark:text-ink-400">{poem.notes}</span>
+              </>
+            )}
+          </div>
+
+          <DynamicPdfButton
+            title={mainTitle}
+            author={poem.author || 'রাফি'}
+            category="কবিতা ও স্তবক"
+            publishedAt={poem.published_at}
+            content={primaryBody}
+            buttonLabel="কবিতাটি পিডিএফ ডাউনলোড করুন"
+          />
         </div>
       </header>
-
-      {/* Embedded PDF Viewer if available */}
-      {poem.pdf_url && (
-        <div className="my-8">
-          <div className="flex items-center justify-between mb-3">
-            <h2 className="text-sm font-sans font-medium text-paper-900 dark:text-ink-100 flex items-center gap-2">
-              <FileText className="w-4 h-4 text-accent" />
-              <span>পিডিএফ পান্ডুলিপি (PDF Manuscript)</span>
-            </h2>
-          </div>
-          <PdfViewer url={poem.pdf_url} title={mainTitle} />
-        </div>
-      )}
 
       {/* Stanza and line-break fidelity */}
       {stanzas.length > 0 && stanzas[0] !== '' && (
@@ -133,6 +118,25 @@ export default async function SinglePoemPage({ params }: { params: { slug: strin
           </div>
         </div>
       )}
+      {/* Footer & Actions */}
+      <footer className="mt-16 pt-8 border-t border-paper-200 dark:border-ink-800 flex items-center justify-between text-xs text-paper-500 dark:text-ink-400">
+        <Link
+          href="/poems"
+          className="hover:text-accent transition-colors flex items-center gap-1"
+        >
+          <ArrowLeft className="w-3.5 h-3.5" />
+          <span>সকল কবিতা</span>
+        </Link>
+
+        <DynamicPdfButton
+          title={mainTitle}
+          author={poem.author || 'রাফি'}
+          category="কবিতা ও স্তবক"
+          publishedAt={poem.published_at}
+          content={primaryBody}
+          buttonLabel="পিডিএফ ডাউনলোড করুন"
+        />
+      </footer>
     </article>
   );
 }

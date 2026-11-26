@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, ArrowRight, BookOpen, ChevronLeft, ChevronRight, Moon, Sun, Type } from 'lucide-react';
 import { MarkdownRenderer } from '../markdown/markdown-renderer';
+import { DynamicPdfButton } from './dynamic-pdf-button';
 import { Book, BookChapter } from '@/lib/types';
 
 interface ReaderProps {
@@ -196,9 +197,17 @@ export function DistractionFreeReader({ book, chapter, prevChapter, nextChapter 
           <h1 className="font-serif text-3xl md:text-4xl font-medium tracking-tight">
             {chapter.title}
           </h1>
-          <p className="text-xs font-mono opacity-70 mt-3">
+          <p className="text-xs font-mono opacity-70 mt-3 mb-4">
             Estimated reading time: {chapter.reading_time_min} minutes
           </p>
+
+          <DynamicPdfButton
+            title={`${book.title} — ${chapter.title}`}
+            author={book.author || 'রাফি'}
+            category="বইয়ের অধ্যায়"
+            content={chapter.content}
+            buttonLabel="অধ্যায়টি পিডিএফ ডাউনলোড করুন"
+          />
         </div>
 
         {/* Prose Content */}

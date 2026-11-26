@@ -173,7 +173,7 @@ export default function AdminDashboardPage() {
             Curator Sanctuary
           </h1>
           <p className="text-xs text-paper-700 dark:text-ink-300 font-serif mt-1">
-            কোনো কোড পরিবর্তন ছাড়াই সরাসরি PDF আপলোড ও প্রকাশ করুন।
+            সরাসরি টেক্সট লিখে বা পেস্ট করে নতুন রচনা প্রকাশ ও সম্পাদনা করুন।
           </p>
         </div>
 
@@ -195,7 +195,7 @@ export default function AdminDashboardPage() {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-accent text-white dark:text-ink-950 text-xs font-medium hover:bg-accent-hover transition-colors shadow-sm"
           >
             <Plus className="w-4 h-4" />
-            <span>{isFormOpen ? 'ফর্ম বন্ধ করুন' : 'নতুন রচনা আপলোড (Upload)'}</span>
+            <span>{isFormOpen ? 'ফর্ম বন্ধ করুন' : 'নতুন রচনা লিখুন (Add Content)'}</span>
           </button>
         </div>
       </div>
@@ -338,15 +338,15 @@ export default function AdminDashboardPage() {
             </div>
           ) : filteredEntries.length === 0 ? (
             <div className="p-12 text-center text-xs font-serif text-paper-700 dark:text-ink-400">
-              কোনো রচনা পাওয়া যায়নি। &quot;নতুন রচনা আপলোড&quot; বাটনে ক্লিক করে যোগ করুন।
+              কোনো রচনা পাওয়া যায়নি। &quot;নতুন রচনা লিখুন&quot; বাটনে ক্লিক করে যোগ করুন।
             </div>
           ) : (
             <table className="w-full text-left text-xs font-sans">
               <thead className="bg-paper-200/60 dark:bg-ink-850 text-paper-700 dark:text-ink-300 uppercase tracking-wider font-mono">
                 <tr>
                   <th className="p-3.5">শিরোনাম (Title)</th>
-                  <th className="p-3.5">শাখা (Type)</th>
-                  <th className="p-3.5">ফাইল (PDF)</th>
+                  <th className="p-3.5">শাখা (Category)</th>
+                  <th className="p-3.5">লেখক (Author)</th>
                   <th className="p-3.5">স্ট্যাটাস</th>
                   <th className="p-3.5">তারিখ</th>
                   <th className="p-3.5 text-right">পদক্ষেপ (Actions)</th>
@@ -370,18 +370,8 @@ export default function AdminDashboardPage() {
                       <td className="p-3.5 font-mono capitalize text-accent">
                         {item.type}
                       </td>
-                      <td className="p-3.5 font-mono text-[11px]">
-                        {item.pdf_url ? (
-                          <span className="text-emerald-600 dark:text-emerald-400 font-medium">
-                            PDF সংযুক্ত
-                          </span>
-                        ) : item.image_url ? (
-                          <span className="text-indigo-600 dark:text-indigo-400">
-                            চিত্র (Image)
-                          </span>
-                        ) : (
-                          <span className="text-paper-700 dark:text-ink-400">টেক্সট</span>
-                        )}
+                      <td className="p-3.5 font-serif text-[13px] text-paper-800 dark:text-ink-200">
+                        {item.author || item.author_bn || 'রাফি'}
                       </td>
                       <td className="p-3.5">
                         <button

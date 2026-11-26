@@ -53,11 +53,6 @@ export default async function ArticlesPage() {
                     <Clock className="w-3 h-3" />
                     <span>{article.reading_time_min || 5} মিনিট পাঠ</span>
                   </span>
-                  {article.pdf_url && (
-                    <span className="inline-flex items-center gap-1 text-[11px] px-2 py-0.5 rounded bg-accent/10 text-accent font-mono">
-                      <Download className="w-3 h-3" /> PDF
-                    </span>
-                  )}
                   {article.is_sample && (
                     <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-accent/15 text-accent uppercase">
                       Sample

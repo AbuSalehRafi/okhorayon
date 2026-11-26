@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { ResearchPaper } from '@/lib/types';
-import { Download, FileUp, Plus, Sparkles, Trash2, Edit3, Check, Loader2 } from 'lucide-react';
+import { Plus, Sparkles, Trash2, Edit3, Check, Loader2 } from 'lucide-react';
 import { MarkdownEditor } from '@/components/admin/markdown-editor';
 
 export default function AdminResearchPage() {
@@ -20,8 +20,6 @@ export default function AdminResearchPage() {
   const [content, setContent] = useState('');
   const [keywords, setKeywords] = useState('');
   const [status, setStatus] = useState<string>('published');
-  const [pdfUrl, setPdfUrl] = useState('');
-  const [uploadFileName, setUploadFileName] = useState('');
 
   const fetchPapers = async () => {
     try {
@@ -50,8 +48,6 @@ export default function AdminResearchPage() {
     setContent('### 1. Introduction\n\nWorking notes and hypotheses in English or বাংলা...');
     setKeywords('Phenomenology, Aesthetics');
     setStatus('published');
-    setPdfUrl('');
-    setUploadFileName('');
   };
 
   const openEdit = (p: ResearchPaper) => {
@@ -63,22 +59,11 @@ export default function AdminResearchPage() {
     setContent(p.content || '');
     setKeywords(p.keywords?.join(', ') || '');
     setStatus(p.status || 'published');
-    setPdfUrl(p.pdf_url || '');
-    setUploadFileName('');
   };
 
   const cancelForm = () => {
     setEditingPaper(null);
     setIsCreating(false);
-  };
-
-  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      setUploadFileName(file.name);
-      const mockUrl = `/samples/${file.name.toLowerCase().replace(/[^a-z0-9.]+/g, '-')}`;
-      setPdfUrl(mockUrl);
-    }
   };
 
   const handleSave = async (e: React.FormEvent) => {
@@ -119,7 +104,6 @@ export default function AdminResearchPage() {
         content,
         keywords: kwArray,
         status: status as any,
-        pdf_url: pdfUrl || undefined,
         published_at: new Date().toISOString(),
         is_sample: false,
       };
@@ -132,7 +116,6 @@ export default function AdminResearchPage() {
         content,
         keywords: kwArray,
         status: status as any,
-        pdf_url: pdfUrl || undefined,
       };
     } else {
       setSaving(false);
@@ -276,37 +259,6 @@ export default function AdminResearchPage() {
             />
           </div>
 
-          {/* PDF Upload */}
-          <div className="p-4 rounded-lg border border-dashed border-paper-300 dark:border-ink-800 bg-paper-50 dark:bg-ink-950">
-            <label className="block text-xs font-mono uppercase text-paper-700 dark:text-ink-300 mb-2">
-              Attach PDF Manuscript
-            </label>
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-              <label className="cursor-pointer inline-flex items-center gap-2 px-4 py-2 rounded-md bg-paper-200 dark:bg-ink-850 hover:bg-accent hover:text-white transition-colors text-xs font-medium">
-                <FileUp className="w-4 h-4" />
-                <span>Upload PDF File</span>
-                <input
-                  type="file"
-                  accept="application/pdf"
-                  onChange={handleFileUpload}
-                  className="hidden"
-                />
-              </label>
-
-              {uploadFileName && (
-                <span className="text-xs text-accent font-mono">
-                  Attached: {uploadFileName}
-                </span>
-              )}
-
-              {pdfUrl && !uploadFileName && (
-                <span className="text-xs text-paper-700 dark:text-ink-300 font-mono">
-                  PDF Link: {pdfUrl}
-                </span>
-              )}
-            </div>
-          </div>
-
           <div>
             <label className="block text-xs font-mono uppercase text-paper-700 dark:text-ink-300 mb-1">
               Research Notes / Body (Markdown) — Write in English or বাংলা
@@ -377,7 +329,6 @@ export default function AdminResearchPage() {
                   <th className="p-3.5">Title</th>
                   <th className="p-3.5">Status</th>
                   <th className="p-3.5">Keywords</th>
-                  <th className="p-3.5">PDF</th>
                   <th className="p-3.5 text-right">Actions</th>
                 </tr>
               </thead>
@@ -398,15 +349,6 @@ export default function AdminResearchPage() {
                     </td>
                     <td className="p-3.5 font-mono text-paper-700 dark:text-ink-300">
                       {p.keywords?.slice(0, 3).join(', ') || '—'}
-                    </td>
-                    <td className="p-3.5 font-mono">
-                      {p.pdf_url ? (
-                        <span className="text-accent flex items-center gap-1">
-                          <Download className="w-3 h-3" /> PDF
-                        </span>
-                      ) : (
-                        '—'
-                      )}
                     </td>
                     <td className="p-3.5 text-right space-x-2">
                       <button

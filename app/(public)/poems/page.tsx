@@ -51,11 +51,6 @@ export default async function PoemsPage() {
                   {formatDate(poem.published_at)}
                 </time>
                 <div className="flex items-center gap-2">
-                  {poem.pdf_url && (
-                    <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-accent/10 text-accent inline-flex items-center gap-1">
-                      <Download className="w-3 h-3" /> PDF
-                    </span>
-                  )}
                   {poem.is_sample && (
                     <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-accent/15 text-accent uppercase tracking-wider">
                       Sample

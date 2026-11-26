@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
         const collectionKey =
           type === 'poem'
             ? 'poems'
-            : type === 'article'
+            : type === 'article' || type === 'story'
             ? 'articles'
             : type === 'research'
             ? 'research'
@@ -63,7 +63,7 @@ export async function POST(req: NextRequest) {
         const collectionKey =
           type === 'poem'
             ? 'poems'
-            : type === 'article'
+            : type === 'article' || type === 'story'
             ? 'articles'
             : type === 'research'
             ? 'research'
@@ -83,7 +83,7 @@ export async function POST(req: NextRequest) {
         const collectionKey =
           type === 'poem'
             ? 'poems'
-            : type === 'article'
+            : type === 'article' || type === 'story'
             ? 'articles'
             : type === 'research'
             ? 'research'

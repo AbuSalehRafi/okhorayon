@@ -87,11 +87,6 @@ export default async function HomePage() {
                       {article.reading_time_min} মিনিট পাঠ
                     </span>
                   </div>
-                  {article.pdf_url && (
-                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] bg-accent/10 text-accent font-mono">
-                      <Download className="w-3 h-3" /> PDF
-                    </span>
-                  )}
                 </div>
 
                 <h3 className="font-serif text-xl md:text-2xl font-normal text-paper-900 dark:text-ink-100 group-hover:text-accent transition-colors">
@@ -252,13 +247,7 @@ export default async function HomePage() {
                 </div>
 
                 <div className="mt-5 pt-3 border-t border-paper-200 dark:border-ink-800/60 flex items-center justify-between text-xs">
-                  {paper.pdf_url ? (
-                    <span className="inline-flex items-center gap-1 text-[11px] text-accent font-mono">
-                      <Download className="w-3 h-3" /> PDF সংযুক্ত
-                    </span>
-                  ) : (
-                    <span className="text-paper-400 dark:text-ink-500">অনলাইন পেপার</span>
-                  )}
+                  <span className="text-paper-400 dark:text-ink-500 font-mono text-[11px]">অনলাইন পাঠাগার</span>
                   <Link
                     href={`/research/${paper.slug}`}
                     className="text-accent hover:underline font-medium"

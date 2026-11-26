@@ -7,6 +7,8 @@ export interface BaseItem {
   slug: string;
   title: string;
   title_bn?: string;
+  author?: string;
+  author_bn?: string;
   description?: string;
   description_bn?: string;
   excerpt?: string;
